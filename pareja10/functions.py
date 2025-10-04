@@ -45,3 +45,19 @@ def getPeopleInStateAmmount(people, cities, state):
             peopleAmmount += 1
 
     return peopleAmmount
+
+def reapeatedDigits(n):
+    """
+    It´s a funtion that returns a list that contains reapeted digits in 'n' parameter
+    Eparamas - n: int - number to check
+    @return - list
+    """
+
+    repeatedDigits = []
+    nString = str(n)
+
+    for digit in nString:
+        if nString.count(digit) > 1 and not digit in repeatedDigits:
+            repeatedDigits.append(int(digit))
+
+    return repeatedDigits
