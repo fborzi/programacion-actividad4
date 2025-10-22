@@ -20,11 +20,12 @@ def minimo_elemento(lista):
     return minimo
 
 """FUNCION EJERCICOIO 8"""
-def pieda_papel_tijera(uno, dos):
+def piedra_papel_tijera(uno, dos):
     """
-    Determia el ganador del juego piedra, papel o tijeras.
-    @params - string: cadena de caracteres
-    @return: int
+    Determina el ganador del juego piedra, papel o tijeras.
+    @params - uno : string - eleccion del jugador 1('piedra', 'papel' o 'tijeras')
+    @params - dos: string - eleccion del jugador 2('piedra', 'papel' o 'tijeras') 
+    @return: int - 1 si gana el jugador 1, 2 si gana el jugador 2, 0 si hay empate
     """
 
     uno = uno.lower()
@@ -39,3 +40,24 @@ def pieda_papel_tijera(uno, dos):
         return 1
     
     return 2
+
+"""FUNCION EJERCICIO 10"""
+def borrar_adyacentes(lista):
+    """
+    Recibe una lista de caracteres y retorna una lista donde queda una única
+    ocurrencia de todos los caracteres adyacentes repetidos.
+    @params - lista: list -lista de caracteres (string de 1 longitud)
+    @return: list - lista sin caracteres repetidos
+    """
+
+    if len(lista) == 0:
+        return[]
+    
+    resultado = [lista[0]]
+
+    for i in range(1, len(lista)):
+        if lista[i] != lista[i-1]:
+            resultado.append(lista[i])
+    
+    return resultado
+

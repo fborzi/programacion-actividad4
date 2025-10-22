@@ -10,7 +10,7 @@ jugador, 2 si ganó el segundo o 0 si hubo empate
 (ambos eligieron el mismo elemento).
 """
 
-from funciones import pieda_papel_tijera
+from funciones import piedra_papel_tijera
 import random
 
 opciones = ['piedra', 'papel', 'tijera']
@@ -18,7 +18,7 @@ opciones = ['piedra', 'papel', 'tijera']
 for i in range (5):
     jugador1 = random.choice(opciones)
     jugador2 = random.choice(opciones)
-    resultado = pieda_papel_tijera(jugador1, jugador2)
+    resultado = piedra_papel_tijera(jugador1, jugador2)
 
     print("Partida", i+1)
     print(" Jugador 1:", jugador1)
