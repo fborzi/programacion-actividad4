@@ -1,8 +1,7 @@
 """
-Implementar la función minimo_elemento(lista) 
-que recibe como parámetro una lista de elementos 
-comparables entre sí y devuelve el mínimo valor 
-encontrado en dicha lista o None si la lista fuera 
+Ejercicio6
+Implementar la función minimo_elemento(lista) que recibe como parámetro una lista de elementos 
+comparables entre sí y devuelve el mínimo valor encontrado en dicha lista o None si la lista fuera 
 vacía.
 
 Ejemplos:minimo_elemento([4, 8, 15, 16, 23, 42])
