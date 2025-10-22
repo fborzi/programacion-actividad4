@@ -1,3 +1,4 @@
+#---------------------------------------------------------------------------------------#
 """Funcion EJERCICIO 6"""
 def minimo_elemento(lista):
     """
@@ -18,7 +19,7 @@ def minimo_elemento(lista):
             minimo = elemento
     
     return minimo
-
+#---------------------------------------------------------------------------------------#
 """FUNCION EJERCICOIO 8"""
 def piedra_papel_tijera(uno, dos):
     """
@@ -40,7 +41,7 @@ def piedra_papel_tijera(uno, dos):
         return 1
     
     return 2
-
+#---------------------------------------------------------------------------------------#
 """FUNCION EJERCICIO 10"""
 def borrar_adyacentes(lista):
     """
@@ -60,7 +61,7 @@ def borrar_adyacentes(lista):
             resultado.append(lista[i])
     
     return resultado
-
+#---------------------------------------------------------------------------------------#
 """FUNCION EJERCICIO 12"""
 def suma_digitos(n):
     """
@@ -89,3 +90,21 @@ def sumatoria_digitos(lista):
         suma = suma_digitos(numero)
         resultado.append(suma)
     return resultado
+#---------------------------------------------------------------------------------------#
+"""FUNCIONES EJERCICIO 14"""
+def dos_sumando(lista, resultado):
+    """
+    Dada una lista de numeros y un resultado, retorna los índices de dos
+    elementos de la lista que sumados dan como resultado el número indicado.
+    @params - lista: list - lista de numeros
+    @params - resultado: int - numero objetivo de la suma
+    @return: list - lista de dos indices
+    """
+
+    for i in range(len(lista)):
+        for j in range (i + 1, len(lista)):
+            if lista[i] + lista[j] == resultado:
+                return [i,j]
+            
+    return[]
+#---------------------------------------------------------------------------------------#
