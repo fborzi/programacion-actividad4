@@ -61,3 +61,31 @@ def borrar_adyacentes(lista):
     
     return resultado
 
+"""FUNCION EJERCICIO 12"""
+def suma_digitos(n):
+    """
+    Dado un número entero positivo, retorna la suma de sus dígitos.
+    @params - n: int - numero entero positivo
+    @return: int - suma de los digitos del numero
+    """
+    suma = 0
+
+    while n > 0:
+        digito = n % 10
+        suma = suma + digito
+        n = n // 10
+    return suma
+
+def sumatoria_digitos(lista):
+    """
+    Dada una lista de numeros enteros positivos, retorna una lista con 
+    la suma de los dígitos de cada uno de los números.
+    @params - int: numeros enteros positivos
+    @return - int: numeros enteros positivos
+    """
+    resultado = []
+
+    for numero in lista:
+        suma = suma_digitos(numero)
+        resultado.append(suma)
+    return resultado
