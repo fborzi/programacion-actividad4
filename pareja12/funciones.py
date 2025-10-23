@@ -108,3 +108,29 @@ def dos_sumando(lista, resultado):
             
     return[]
 #---------------------------------------------------------------------------------------#
+"""FUNCION 18"""
+def digitos_repetidos(n):
+    """
+    Dado un número n, retorna una lista con los dígitos que se repiten en n.
+    Cada dígito aparece una única vez en la lista.
+    @params - n: int - numero entero
+    @return: list - lista con los dígitos repetidos
+    """
+
+    numero_str = str(n)
+
+    contador = {}
+
+    for digito in numero_str:
+        if digito in contador:
+            contador[digito] = contador[digito] + 1
+        else: 
+            contador[digito] = 1
+
+    repetidos = []
+
+    for digito in contador:
+        if contador[digito] > 1:
+            repetidos.append(int(digito))
+
+    return repetidos
