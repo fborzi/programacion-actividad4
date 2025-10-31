@@ -2,6 +2,7 @@ horm1 = set(['melanina', 'oxitocina', 'dopamina'])
 horm2 = set(['testosterona', 'melanina']) 
 horm3 = set(['calcinotna', 'estradiol'])
 hormSharing = False
+horm1SubSetOfHorm2 = True
 # A
 for horm in horm1:
     if horm in horm2:
@@ -23,21 +24,24 @@ if not hormSharing:
     print("horm1 and horm3 don´t share any hormon with horm3.")
 
 # B
-if horm2 in horm1:
-    print("horm2 is a subset of homr1.")
-else:
-    print("horm2 isn´t a subset of homr1.")
-
-# C
 for horm in horm1:
-    print("horm1: ", horm)
+    if not horm in horm2:
+        hormSharing = False
+        print("horm1 isn´t a subset of horm2.")
+        break
 
-print("")
+if horm1SubSetOfHorm2:
+    print("horm1 is a subset of horm2.")
 
+#C
+print("Horm1:")
+for horm in horm1:
+    print(horm)
+
+print("Horm2:")
 for horm in horm2:
-    print("horm2: ", horm)
+    print(horm)
 
-print("")
-
+print("Horm3:")
 for horm in horm3:
-    print("horm3: ", horm)
+    print(horm)
