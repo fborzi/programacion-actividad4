@@ -25,7 +25,7 @@ if not hormSharing:
 
 # B
 for horm in horm1:
-    if not horm in horm2:
+    if horm not in horm2:
         hormSharing = False
         print("horm1 isn´t a subset of horm2.")
         break
