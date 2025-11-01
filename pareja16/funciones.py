@@ -302,3 +302,4 @@ def sucesion_mira_y_deci(n):
 
 # Ejemplo de uso:
 print(sucesion_mira_y_deci(9))
+
