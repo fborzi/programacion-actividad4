@@ -34,6 +34,7 @@ while hasRepeatedNumbers:
     hasRepeatedNumbers = False
     repeatedDigitsAmmount = 0
     hasRepeatedNumbers = False
+    digitsRepeated = set()
 
     numberToCheck = int(input("Enter a integer number: "))
     stringNumber = str(numberToCheck)
