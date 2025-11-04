@@ -104,3 +104,17 @@ def hasThreeDifferentVowels(word):
         if letter in vowels and letter not in found:
             found.append(letter)
     return len(found) >= 3
+
+def characterFrequency(text):
+    """
+    It´s a functio that returns the ammount of times that a character appears in the text.
+    Eparams - text: str - text to chek
+    return - dicc
+    """
+    frequency = {}
+    for char in text:
+        if char in frequency:
+            frequency[char] += 1
+        else:
+            frequency[char] = 1
+    return frequency
