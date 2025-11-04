@@ -72,3 +72,20 @@ def repeatedLetters(word):
     letters = [c for c in word if c.isalpha()]
     repeated = set([c for c in letters if letters.count(c) > 1])
     return repeated
+
+def removeAccents(text):
+    """
+    It´sa function that replaces accented vowels with their non-accented equivalents.
+    Eparams - text: str - text to check
+    return - str
+    """
+    accents = {
+        'á': 'a', 'à': 'a', 'ä': 'a', 'â': 'a',
+        'é': 'e', 'è': 'e', 'ë': 'e', 'ê': 'e',
+        'í': 'i', 'ì': 'i', 'ï': 'i', 'î': 'i',
+        'ó': 'o', 'ò': 'o', 'ö': 'o', 'ô': 'o',
+        'ú': 'u', 'ù': 'u', 'ü': 'u', 'û': 'u'
+    }
+    for accented, normal in accents.items():
+        text = text.replace(accented, normal)
+    return text
