@@ -177,3 +177,31 @@ def versionB():
     print("Number of cities per country:")
     for country, count in countryCount.items():
         print(f"{country}: {count}")
+
+def sucesionMiraYDeci(n):
+    """
+    It´s a function that generates the first n terms of the “look and say” sequence.
+    Eparamas - n: int number to check
+    return - list
+    """
+    if n <= 0:
+        return []
+
+    sequence = ["1"]
+
+    for _ in range(1, n):
+        prev = sequence[-1]
+        nextNum = ""
+        count = 1
+
+        for i in range(1, len(prev)):
+            if prev[i] == prev[i - 1]:
+                count += 1
+            else:
+                nextNum += str(count) + prev[i - 1]
+                count = 1
+
+        nextNum += str(count) + prev[-1]
+        sequence.append(nextNum)
+
+    return sequence
