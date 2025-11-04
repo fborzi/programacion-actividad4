@@ -90,7 +90,7 @@ def removeAccents(text):
         text = text.replace(accented, normal)
     return text
 
-def has_three_different_vowels(word):
+def hasThreeDifferentVowels(word):
     """
     It´s a function that checks if a word has at least 3 different vowels.
     Eparamas - word: str
