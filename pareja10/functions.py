@@ -118,3 +118,62 @@ def characterFrequency(text):
         else:
             frequency[char] = 1
     return frequency
+
+def versionA():
+    """
+    It´s a functios that only keeps a count of how many cities were entered and how many belong to each country.
+    Eparams - 
+    return - 
+    """
+    cityCount = 0
+    countryCount = {}
+
+    while True:
+        city = input("Enter a city (or 'zz' to stop): ")
+        if city.lower() == "zz":
+            break
+
+        country = input("Enter the country this city belongs to: ")
+        cityCount += 1
+
+        if country in countryCount:
+            countryCount[country] += 1
+        else:
+            countryCount[country] = 1
+
+    print("\n--- Results ---")
+    print("Total number of cities entered:", cityCount)
+    print("Number of cities per country:")
+    for country, count in countryCount.items():
+        print(f"{country}: {count}")
+
+
+def versionB():
+    """
+    It´s a functios that stores each [city, country] pair in a list, and then process that list to count the cities per country.
+    Eparams -
+    return - 
+    """
+    cities = []
+
+    while True:
+        city = input("Enter a city (or 'zz' to stop): ")
+        if city.lower() == "zz":
+            break
+
+        country = input("Enter the country this city belongs to: ")
+        cities.append([city, country])
+
+    # Process list to count how many cities per country
+    countryCount = {}
+    for city, country in cities:
+        if country in countryCount:
+            countryCount[country] += 1
+        else:
+            countryCount[country] = 1
+
+    print("\n--- Results ---")
+    print("Total number of cities entered:", len(cities))
+    print("Number of cities per country:")
+    for country, count in countryCount.items():
+        print(f"{country}: {count}")
