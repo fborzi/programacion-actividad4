@@ -89,3 +89,18 @@ def removeAccents(text):
     for accented, normal in accents.items():
         text = text.replace(accented, normal)
     return text
+
+def has_three_different_vowels(word):
+    """
+    It´s a function that checks if a word has at least 3 different vowels.
+    Eparamas - word: str
+    return - bool
+    """
+    word = word.lower()
+    word = removeAccents(word)
+    vowels = ['a', 'e', 'i', 'o', 'u']
+    found = []
+    for letter in word:
+        if letter in vowels and letter not in found:
+            found.append(letter)
+    return len(found) >= 3
