@@ -61,3 +61,14 @@ def reapeatedDigits(n):
             repeatedDigits.append(int(digit))
 
     return repeatedDigits
+
+def repeatedLetters(word):
+    """
+    It´s a function that returns a set that contains the repeated leeter in the "word" argument
+    Eparams - word: str - string to check
+    return - set 
+    """
+    word = word.lower()
+    letters = [c for c in word if c.isalpha()]
+    repeated = set([c for c in letters if letters.count(c) > 1])
+    return repeated
