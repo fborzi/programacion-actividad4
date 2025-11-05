@@ -33,3 +33,15 @@ def agregar_nombres():
     print("\nLista de nombres ingresados:")
     for n in nombres:
         print(n)
+
+
+def minimo_elemento(lista):
+    if not lista: 
+        return None
+    
+    minimo = lista[0]  
+    for elemento in lista[1:]:  
+        if elemento < minimo:
+            minimo = elemento
+    print(f"El elemento mínimo es: {minimo}")
+    return minimo   
