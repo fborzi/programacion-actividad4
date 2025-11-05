@@ -1,6 +1,5 @@
-d
-print(piedra_papel_tijera("papel", "PIEDRA"))   # → 1
-print(piedra_papel_tijera("tijera", "papel"))   # → 1
-print(piedra_papel_tijera("piedra", "papel"))   # → 2
-print(piedra_papel_tijera("tijera", "tijera"))  # → 0
-
+import funciones
+print(funciones.piedra_papel_tijera("papel", "PIEDRA")) 
+print(funciones.piedra_papel_tijera("tijera", "papel"))   
+print(funciones.piedra_papel_tijera("piedra", "papel"))  
+print(funciones.piedra_papel_tijera("tijera", "tijera")) 
