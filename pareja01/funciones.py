@@ -72,3 +72,22 @@ def digitos(numero):
         digitos.append(int(digito))
     print(digitos) 
     return digitos
+# Juego de Piedra, Papel o Tijera
+
+
+def piedra_papel_tijera(uno, dos):
+    
+    uno = uno.lower()
+    dos = dos.lower()
+
+    
+    if uno == dos:
+        return 0
+
+    if (uno == "piedra" and dos == "tijera") or \
+       (uno == "tijera" and dos == "papel") or \
+       (uno == "papel" and dos == "piedra"):
+        return 1  
+    else:
+        return 2  
+   
