@@ -123,7 +123,6 @@ def ocurrencias(lista):
     print(resultado)
     return resultado
 
-<<<<<<< HEAD
 
 def suma_digitos(n):
     
@@ -133,7 +132,6 @@ def suma_digitos(n):
 def sumatoria_digitos(lista):
     
     return [suma_digitos(num) for num in lista]
-=======
 # Retorna el índice del mayor número en la lista.
 # parametro lista: []
 def indice_mayor(lista):
@@ -160,4 +158,3 @@ def dos_sumandos(lista, resultado):
                 return (i, j)
     print("No se encontraron dos sumandos que den el resultado esperado.")
     return None
->>>>>>> 3d3b6e3ec3c8f52db423c07f1d7f9432166d9c2c
