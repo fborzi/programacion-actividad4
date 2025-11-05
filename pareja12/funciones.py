@@ -69,6 +69,28 @@ def piedra_papel_tijera(uno, dos):
     
     return 2
 #---------------------------------------------------------------------------------------#
+"""FUNCION EJERCICIO 9"""
+def digitos(numero):
+    """
+    Retorna una lista con los dígitos que componen al número.
+    
+    Args:
+        numero: número entero (puede ser positivo o negativo)
+    
+    Returns:
+        lista con los dígitos del número
+    """
+    # Convertimos a string, quitamos el signo si es negativo
+    # y convertimos cada caracter de vuelta a entero
+    return [int(d) for d in str(abs(numero))]
+
+
+# Ejemplos de uso
+print(digitos(18413))  # [1, 8, 4, 1, 3]
+print(digitos(567))    # [5, 6, 7]
+print(digitos(0))      # [0]
+print(digitos(-1234))  # [1, 2, 3, 4]
+#---------------------------------------------------------------------------------------#
 """FUNCION EJERCICIO 10"""
 def borrar_adyacentes(lista):
     """
