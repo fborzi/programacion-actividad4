@@ -46,4 +46,25 @@ for i in numerosAConsultar:
 
 #J
 
+con_1= 0
+con_4= 0
 
+for i in a:
+    if i == 1:
+        con_1 += 1
+    elif i == 4:
+        con_4 += 1
+
+print('Hay ', con_1, 'uno(s) en su lista' )
+print('Hay ', con_4, 'cuatro(s) en su lista' )
+
+
+#K
+
+for i in a:
+    print(i)
+
+
+#L
+for i in a[::-1]:
+    print(i)
