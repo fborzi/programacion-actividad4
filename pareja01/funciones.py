@@ -92,8 +92,8 @@ def piedra_papel_tijera(uno, dos):
         return 2  
     
 
-    def borrar_adyacentes(lista):
-     if not lista:  
+def borrar_adyacentes(lista):
+    if not lista:  
         return []
 
     resultado = [lista[0]]  
@@ -122,3 +122,13 @@ def ocurrencias(lista):
     resultado.append([elemento_actual, contador])
     print(resultado)
     return resultado
+
+
+def suma_digitos(n):
+    
+    return sum(int(digito) for digito in str(n))
+
+
+def sumatoria_digitos(lista):
+    
+    return [suma_digitos(num) for num in lista]
