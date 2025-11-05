@@ -135,3 +135,17 @@ def indice_mayor(lista):
             indiceMayor = i
     print(indiceMayor)
     return indiceMayor
+
+
+#retorna los índices de dos elementos cuya suma da el resultado esperado.
+#parametro lista: []
+#parametro resultado: int
+def dos_sumandos(lista, resultado):
+    longitud = len(lista)
+    for i in range(longitud):
+        for j in range(i + 1, longitud):
+            if lista[i] + lista[j] == resultado:
+                print("Índices encontrados:", i, j)
+                return (i, j)
+    print("No se encontraron dos sumandos que den el resultado esperado.")
+    return None
