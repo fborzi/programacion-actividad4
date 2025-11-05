@@ -2,6 +2,7 @@
 b = [4, "palabra", [0, 1], 9.6, False]
 
 # Verificar si los elementos pertenecen a la lista
+
 elementos = [9.6, 0, False, [0, 1], 4.0, "p"]
 
 for e in elementos:

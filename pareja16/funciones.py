@@ -5,12 +5,15 @@ def minimo_elemento(lista):
 
     """La función recibe como parámetro una lista de elementos comparables
       entre sí y devuelve el mínimo valor encontrado en dicha lista
-      o None si la lista fuera vacía"""
+      o None si la lista fuera vacía
+      @Param: Lista de elementos
+      @return: None (lista vacia). valor minimo (lista con elementos)
+      """
 
     if len(lista) == 0:
-        return None  # Si la lista está vacía, devuelve None
+        return None 
 
-    minimo = lista[0]  # Tomamos el primer elemento como referencia
+    minimo = lista[0] 
 
     for elemento in lista:
         if elemento < minimo:
@@ -30,13 +33,13 @@ def dos_minimos(lista):
     elif len(lista) == 1:
         return (lista[0], None)
     else:
-        # Suponemos que los dos primeros son los mínimos (en orden)
+
         if lista[0] < lista[1]:
             min1, min2 = lista[0], lista[1]
         else:
             min1, min2 = lista[1], lista[0]
 
-        # Recorremos el resto de la lista
+
         for i in range(2, len(lista)):
             n = lista[i]
             if n < min1:
@@ -64,15 +67,15 @@ def piedra_papel_tijera(uno, dos):
     - 0 si hay empate (ambos eligieron el mismo elemento)
     """
 
-    # Pasamos todo a minúsculas para ignorar mayúsculas/minúsculas
+
     uno = uno.lower()
     dos = dos.lower()
 
-    # Si son iguales, hay empate
+
     if uno == dos:
         return 0
 
-    # Casos donde gana el jugador 1
+
     if (uno == "piedra" and dos == "tijera") or (uno == "tijera" and dos == "papel") or (uno == "papel" and dos == "piedra"):
         return 1
     else:
@@ -83,12 +86,14 @@ def piedra_papel_tijera(uno, dos):
 def digitos(numero):
     """
     Recibe un número entero y retorna una lista con sus dígitos.
+    @Parametro numero entero
+    @ retorno lista de numeros eneteros
 
     """
-
+    numero = abs(numero)
     lista = []
-    for digito in str(numero):   # Convertimos el número a texto para recorrer cada dígito
-        lista.append(int(digito))  # Convertimos cada carácter nuevamente a entero
+    for digito in str(numero):
+        lista.append(int(digito))
     return lista
 
 
@@ -99,13 +104,13 @@ def borrar_adyacentes(lista):
     repeticiones consecutivas de caracteres adyacentes.
 
     """
-    if not lista:  # si la lista está vacía
+    if not lista:
         return []
 
-    resultado = [lista[0]]  # siempre incluimos el primer elemento
+    resultado = [lista[0]]
 
     for i in range(1, len(lista)):
-        if lista[i] != lista[i - 1]:  # si el actual es distinto al anterior
+        if lista[i] != lista[i - 1]:
             resultado.append(lista[i])
 
     return resultado
@@ -119,7 +124,7 @@ def ocurrencias(lista):
     junto con el número de ocurrencias contiguas de ese elemento.
 
     """
-    if not lista:  # Lista vacía
+    if not lista:
         return []
 
     resultado = []
@@ -236,7 +241,7 @@ def contarPoblacion(personas, ciudades, provincia):
 
     for persona in personas:
         DNI = persona[1]
-        prov = obtenerProvincia(personas, ciudades, DNI)  # Usamos la función del inciso b
+        prov = obtenerProvincia(personas, ciudades, DNI)
         if prov == provincia:
             contador += 1
     return contador
@@ -244,7 +249,7 @@ def contarPoblacion(personas, ciudades, provincia):
 #Ejercicio 18
 
 def digitos_repetidos(n):
-    # Convertimos el número en string para recorrer los dígitos
+
     s = str(n)
 
     repetidos = []
