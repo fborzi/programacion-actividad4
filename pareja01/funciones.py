@@ -1,3 +1,7 @@
+
+# Devuelve los dos valores minimos de una lista de numeros.
+# Si la lista tiene menos de dos elementos, devuelve None en el segundo valor.
+# parametro lista: []
 def dos_minimos(lista):
     largo = len(lista)
     if largo < 2:
@@ -22,13 +26,14 @@ def dos_minimos(lista):
     print("Primer valor menor: ", min1, ". Segundo valor menor: ", min2)
     return (min1, min2)
 
-nombres = []
+# Agregar nombres a una lista hasta que el usuario decida finalizar ingresando una cadena vacia.
 def agregar_nombres():
+    nombres = []
     while True:
-        nombre = input("Introduce un nombre (deja en blanco para finalizar): ")
-        if nombre == "":  # Si el usuario no escribe nada, se termina el bucle
+        nombre = input("Introduce un nombre (o presiona Enter para dejar en blanco y finalizar): ")
+        if nombre == "" or nombre == " ":
             break
-        nombres.append(nombre)  # Agrega el nombre al final de la lista
+        nombres.append(nombre)
 
     print("\nLista de nombres ingresados:")
     for n in nombres:
@@ -45,3 +50,15 @@ def minimo_elemento(lista):
             minimo = elemento
     print(f"El elemento mínimo es: {minimo}")
     return minimo   
+    return nombres
+
+#Convierte en mayusculas una lista de nombres.
+#parametro nombres: []
+def nombres_mayusculas(nombres):
+    nombresMayus = []
+    for nombre in nombres:
+            nombre = nombre.upper()
+            nombresMayus.append(nombre)
+
+    print("\nLista de nombres en mayúsculas:", nombresMayus)
+    return nombresMayus
