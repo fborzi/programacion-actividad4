@@ -206,6 +206,71 @@ def dos_sumando(lista, resultado):
             
     return[]
 #---------------------------------------------------------------------------------------#
+"""FUNCION EJERCICIO 15"""
+def obtenerCiudad(personas, DNI):
+    """
+    Retorna la ciudad donde vive la persona con el DNI dado.
+    
+    Args:
+        personas: lista de personas [nombre, DNI, ciudad]
+        DNI: DNI a buscar
+    
+    Returns:
+        nombre de la ciudad o None si no se encuentra
+    """
+    for persona in personas:
+        if persona[1] == DNI:
+            return persona[2]
+    return None
+
+
+def obtenerProvincia(personas, ciudades, DNI):
+    """
+    Retorna la provincia donde vive la persona con el DNI dado.
+    
+    Args:
+        personas: lista de personas [nombre, DNI, ciudad]
+        ciudades: lista de ciudades [ciudad, provincia]
+        DNI: DNI a buscar
+    
+    Returns:
+        nombre de la provincia o None si no se encuentra
+    """
+    ciudad = obtenerCiudad(personas, DNI)
+    
+    if ciudad is None:
+        return None
+    
+    for ciudad_info in ciudades:
+        if ciudad_info[0] == ciudad:
+            return ciudad_info[1]
+    
+    return None
+
+
+def contarPoblacion(personas, ciudades, provincia):
+    """
+    Cuenta cuántas personas viven en la provincia dada.
+    
+    Args:
+        personas: lista de personas [nombre, DNI, ciudad]
+        ciudades: lista de ciudades [ciudad, provincia]
+        provincia: nombre de la provincia
+    
+    Returns:
+        cantidad de personas en esa provincia
+    """
+    contador = 0
+    
+    for persona in personas:
+        DNI = persona[1]
+        provincia_persona = obtenerProvincia(personas, ciudades, DNI)
+        
+        if provincia_persona == provincia:
+            contador += 1
+    
+    return contador
+#---------------------------------------------------------------------------------------#
 """FUNCION 18"""
 def digitos_repetidos(n):
     """
