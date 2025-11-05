@@ -91,3 +91,21 @@ def piedra_papel_tijera(uno, dos):
     else:
         return 2  
    
+# Retorna una lista que contiene listas formadas por cada elemento de la lista junto con el número de ocurrencias contiguas de ese elemento en la lista, con el orden en que fueron apareciendo.
+# parametro lista: []
+def ocurrencias(lista):
+    resultado = []
+    contador = 1
+    elemento_actual = lista[0]
+
+    for elemento in lista[1:]:
+        if elemento == elemento_actual:
+            contador += 1
+        else:
+            resultado.append([elemento_actual, contador])
+            elemento_actual = elemento
+            contador = 1
+
+    resultado.append([elemento_actual, contador])
+    print(resultado)
+    return resultado
