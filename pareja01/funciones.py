@@ -90,4 +90,17 @@ def piedra_papel_tijera(uno, dos):
         return 1  
     else:
         return 2  
+    
+
+    def borrar_adyacentes(lista):
+     if not lista:  
+        return []
+
+    resultado = [lista[0]]  
+
+    for elemento in lista[1:]:
+        if elemento != resultado[-1]: 
+            resultado.append(elemento)
+
+    return resultado
    
