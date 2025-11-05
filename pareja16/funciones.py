@@ -3,17 +3,24 @@
 
 def minimo_elemento(lista):
 
-    """La función recibe como parámetro una lista de elementos comparables
-      entre sí y devuelve el mínimo valor encontrado en dicha lista
-      o None si la lista fuera vacía
-      @Param: Lista de elementos
-      @return: None (lista vacia). valor minimo (lista con elementos)
-      """
+    """
+    Funcion: minimo_elemento(lista)
+    Parametros:
+        lista: list
+            Lista de elementos comparables entre sí.
+    Retorna:
+        El valor mínimo encontrado en la lista (mismo tipo de dato que los elementos)
+        o None si la lista está vacía.
+    Descripcion:
+        Recorre la lista recibida, comparando elemento por elemento, y determina el
+        valor más chico. En caso de lista vacía, devuelve None.
+
+    """
 
     if len(lista) == 0:
-        return None 
+        return None
 
-    minimo = lista[0] 
+    minimo = lista[0]
 
     for elemento in lista:
         if elemento < minimo:
@@ -24,9 +31,21 @@ def minimo_elemento(lista):
 
 def dos_minimos(lista):
 
-    """La función recibe una lista como argumento y compara sus elementos, devolviendo
-    sus dos elementos menores. Si la lista esta vacia o si tiene menos de dos elementos
-    devuelve None por cada elemento faltante."""
+    """
+    Funcion: dos_minimos(lista)
+    Parametros:
+        lista: list
+            Lista de elementos comparables entre sí.
+    Retorna:
+        tuple
+            Una tupla formada por los dos valores mínimos hallados en la lista.
+            Si la lista está vacía retorna (None, None).
+            Si la lista tiene un solo elemento retorna (ese_elemento, None).
+    Descripcion:
+        Analiza los elementos de la lista para identificar los dos valores más pequeños.
+        En el caso de lista vacía o con un único elemento, completa con None lo que
+        falte para devolver siempre una tupla de dos posiciones.
+    """
 
     if len(lista) == 0:
         return (None, None)
@@ -58,15 +77,22 @@ def dos_minimos(lista):
 def piedra_papel_tijera(uno, dos):
 
     """
-    Esta función recibe dos cadenas que representan las elecciones de dos jugadores 
-    en el juego Piedra, Papel o Tijera. 
-
+    Funcion: piedra_papel_tijera(uno, dos)
+    Parametros:
+        uno: str
+            Elección del primer jugador. Puede ser "piedra", "papel" o "tijera".
+        dos: str
+            Elección del segundo jugador. Puede ser "piedra", "papel" o "tijera".
     Retorna:
-    - 1 si gana el primer jugador
-    - 2 si gana el segundo jugador
-    - 0 si hay empate (ambos eligieron el mismo elemento)
+        int:
+            1 si gana el primer jugador,
+            2 si gana el segundo jugador,
+            0 si ambos jugadores eligieron la misma opción (empate).
+    Descripcion:
+        Compara las elecciones de ambos jugadores siguiendo las reglas del juego:
+        Piedra vence a Tijera, Tijera vence a Papel y Papel vence a Piedra.
+        Retorna quién gana o si hubo empate.
     """
-
 
     uno = uno.lower()
     dos = dos.lower()
@@ -85,10 +111,17 @@ def piedra_papel_tijera(uno, dos):
 
 def digitos(numero):
     """
-    Recibe un número entero y retorna una lista con sus dígitos.
-    @Parametro numero entero
-    @ retorno lista de numeros eneteros
-
+    Funcion: digitos(numero)
+    Parametros:
+        numero: int
+            Número entero (puede ser positivo o negativo).
+    Retorna:
+        list[int]
+            Lista de dígitos enteros que componen el número recibido, sin signo.
+    Descripcion:
+        Convierte el número a su valor absoluto, lo transforma a cadena,
+        recorre cada carácter y lo convierte nuevamente a entero, generando
+        una lista con cada uno de los dígitos individuales del número.
     """
     numero = abs(numero)
     lista = []
@@ -100,9 +133,17 @@ def digitos(numero):
 # Ejercicio 10
 def borrar_adyacentes(lista):
     """
-    Recibe una lista de caracteres y retorna otra lista eliminando
-    repeticiones consecutivas de caracteres adyacentes.
-
+    Funcion: borrar_adyacentes(lista)
+    Parametros:
+        lista: list
+            Lista de caracteres (strings de longitud 1) o elementos comparables.
+    Retorna:
+        list
+            Nueva lista sin repeticiones consecutivas de elementos adyacentes.
+    Descripcion:
+        Recorre la lista recibida y construye otra lista donde se eliminan
+        únicamente las repeticiones consecutivas (una atrás de la otra).
+        No elimina repeticiones de elementos que reaparezcan luego separados.
     """
     if not lista:
         return []
@@ -120,8 +161,17 @@ def borrar_adyacentes(lista):
 def ocurrencias(lista):
 
     """
-    Recibe una lista y retorna otra lista que contiene listas con cada elemento
-    junto con el número de ocurrencias contiguas de ese elemento.
+    DESCRIPCIÓN GENERAL:
+    Analiza una lista y agrupa cada elemento por sus repeticiones consecutivas.
+    Cada vez que un elemento cambia, se guarda el elemento anterior junto con cuántas veces seguidas apareció.
+    Luego retorna esas agrupaciones como una lista de pares: [elemento, cantidad].
+
+    PARÁMETROS QUE RECIBE:
+    - lista: lista con elementos (pueden ser números, caracteres, strings, etc.)
+
+    QUÉ RETORNA:
+    - Si la lista está vacía → retorna []
+    - Si la lista tiene elementos → retorna una lista con sublistas del tipo: [elemento, cantidad_de_repeticiones_contiguas]
 
     """
     if not lista:
@@ -131,14 +181,14 @@ def ocurrencias(lista):
     actual = lista[0]
     contador = 1
 
-    # Recorrer desde el segundo elemento
+
     for elem in lista[1:]:
         if elem == actual:
-            contador += 1  # Mismo elemento consecutivo
+            contador += 1  
         else:
-            resultado.append([actual, contador])  # Guardar el anterior
-            actual = elem  # Cambiar al nuevo elemento
-            contador = 1  # Reiniciar contador
+            resultado.append([actual, contador])  
+            actual = elem 
+            contador = 1 
 
     # Agregar el último grupo
     resultado.append([actual, contador])
@@ -148,9 +198,17 @@ def ocurrencias(lista):
 
 def suma_digitos(n):
     """
-    Recibe un número entero y retorna la suma de sus dígitos.
+    DESCRIPCIÓN GENERAL:
+    Calcula la suma de todos los dígitos de un número entero positivo.
 
-    """
+    PARÁMETROS QUE RECIBE:
+    - n: int
+        Número entero positivo cuyos dígitos se van a sumar.
+
+    QUÉ RETORNA:
+    - int: la suma de los dígitos de n.
+      Por ejemplo, si n = 123, retorna 6 (1 + 2 + 3).
+      """
     suma = 0
     while n > 0:
         suma += n % 10   # tomo el último dígito
@@ -160,10 +218,17 @@ def suma_digitos(n):
 
 def sumatoria_digitos(lista):
     """
-    Recibe una lista de números enteros positivos y retorna otra lista
-    con la suma de los dígitos de cada número.
+    DESCRIPCIÓN GENERAL:
+    Procesa una lista de números enteros positivos y calcula la suma de los dígitos de cada número.
+    Retorna una nueva lista donde cada elemento corresponde a la suma de los dígitos del número en la misma posición de la lista original.
 
-    """
+    PARÁMETROS QUE RECIBE:
+    - lista: list[int]
+        Lista de números enteros positivos.
+
+    QUÉ RETORNA:
+    - list[int]: lista de la misma longitud que la original, donde cada elemento es la suma de los dígitos del número correspondiente."""
+
     resultado = []
     for numero in lista:
         resultado.append(suma_digitos(numero))
@@ -173,9 +238,17 @@ def sumatoria_digitos(lista):
 
 def indice_mayor(lista):
     """
-    Recibe una lista de números y retorna el índice del mayor elemento.
+    DESCRIPCIÓN GENERAL:
+    Determina cuál es el elemento mayor de una lista de números y devuelve su índice dentro de la lista.
 
-    """
+    PARÁMETROS QUE RECIBE:
+    - lista: list[float|int]
+        Lista de números (enteros o flotantes). Puede estar vacía.
+
+    QUÉ RETORNA:
+    - int: índice del elemento mayor en la lista.
+    - None: si la lista está vacía.
+   """
     if not lista:  # si la lista está vacía
         return None
 
@@ -195,9 +268,19 @@ def indice_mayor(lista):
 def dos_sumandos(lista, resultado):
 
     """
-    Recibe una lista de números y otro número (resultado).
-    Retorna una lista con dos índices de elementos cuya suma da el resultado.
+    DESCRIPCIÓN GENERAL:
+    Busca en una lista dos elementos distintos cuya suma sea igual al valor especificado.
+    Retorna los índices de estos dos elementos si se encuentra una combinación válida.
 
+    PARÁMETROS QUE RECIBE:
+    - lista: list[float|int]
+        Lista de números donde se buscarán los dos sumandos.
+    - resultado: float|int
+        Valor que se desea obtener como suma de dos elementos de la lista.
+
+    QUÉ RETORNA:
+    - list[int]: lista de dos elementos con los índices de los números que suman 'resultado'.
+    - None: si no existe ninguna combinación de dos elementos cuya suma sea igual a 'resultado'.
     """
     for i in range(len(lista)):
         for j in range(i + 1, len(lista)):  # empieza desde i+1 para no usar el mismo número dos veces
@@ -209,8 +292,19 @@ def dos_sumandos(lista, resultado):
 
 def obtenerCiudad(personas, DNI):
     """
-    Recibe la lista de personas y un DNI, y retorna la ciudad donde vive la persona.
+    DESCRIPCIÓN GENERAL:
+    Busca en una lista de personas la ciudad de residencia de quien posee un DNI específico.
 
+    PARÁMETROS QUE RECIBE:
+    - personas: list[list]
+        Lista de personas, donde cada persona se representa como una lista con al menos tres elementos:
+        [nombre, DNI, ciudad, ...].
+    - DNI: int
+        Documento de identidad de la persona cuya ciudad se desea conocer.
+
+    QUÉ RETORNA:
+    - str: nombre de la ciudad donde reside la persona con el DNI especificado.
+    - None: si no se encuentra ninguna persona con el DNI proporcionado.
     """
     for persona in personas:
         if persona[1] == DNI:  # persona[1] es el DNI
@@ -219,8 +313,21 @@ def obtenerCiudad(personas, DNI):
 
 def obtenerProvincia(personas, ciudades, DNI):
     """
-    Recibe las listas de personas y ciudades, y un DNI.
-    Retorna la provincia donde vive la persona.
+    DESCRIPCIÓN GENERAL:
+    Determina la provincia de residencia de una persona a partir de su DNI,
+    usando la relación entre personas y la lista de ciudades con sus provincias.
+    PARÁMETROS QUE RECIBE:
+    - personas: list[list]
+        Lista de personas, donde cada persona se representa como una lista con al menos tres elementos:
+        [nombre, DNI, ciudad, ...].
+    - ciudades: list[list]
+        Lista de ciudades, donde cada ciudad se representa como [nombre_ciudad, provincia].
+    - DNI: int
+        Documento de identidad de la persona cuya provincia se desea conocer.
+
+    QUÉ RETORNA:
+    - str: nombre de la provincia donde reside la persona con el DNI especificado.
+    - None: si no se encuentra la persona con el DNI proporcionado o si la ciudad no está en la lista de ciudades.
     """
     ciudad = obtenerCiudad(personas, DNI)
     if ciudad is None:
@@ -234,8 +341,20 @@ def obtenerProvincia(personas, ciudades, DNI):
 
 def contarPoblacion(personas, ciudades, provincia):
     """
-    Recibe las listas de personas y ciudades y una provincia.
-    Retorna cuántas personas viven en esa provincia.
+    DESCRIPCIÓN GENERAL:
+    Calcula cuántas personas viven en una provincia determinada
+    utilizando la relación entre las listas de personas y ciudades.
+
+    PARÁMETROS QUE RECIBE:
+    - personas: list[list]
+        Lista de personas, donde cada persona se representa como [nombre, DNI, ciudad, ...].
+    - ciudades: list[list]
+        Lista de ciudades, donde cada ciudad se representa como [nombre_ciudad, provincia].
+    - provincia: str
+        Nombre de la provincia cuya población se desea contar.
+
+    QUÉ RETORNA:
+    - int: cantidad de personas que residen en la provincia especificada.
     """
     contador = 0
 
@@ -249,7 +368,8 @@ def contarPoblacion(personas, ciudades, provincia):
 #Ejercicio 18
 
 def digitos_repetidos(n):
-
+    """La funcion recibe un numero como argumento y retorna una lista compuesta por los digitos
+       repetidos en el numero recibido."""
     s = str(n)
 
     repetidos = []
@@ -261,6 +381,17 @@ def digitos_repetidos(n):
 
 
 #Ejercicio 25
+"""
+    Calcula la frecuencia de aparición de cada carácter en la cadena recibida.
+
+    Parámetros:
+    cadena (str): Texto en el que se computarán las frecuencias de cada carácter.
+
+    Retorna:
+    dict: Un diccionario donde las claves son los caracteres encontrados en la cadena
+          y los valores son enteros que indican cuántas veces aparece cada carácter.
+    """
+
 def frecuencia_caracteres(cadena):
     frecuencias = {}
     for caracter in cadena:
@@ -275,35 +406,29 @@ texto = "hola mundo"
 resultado = frecuencia_caracteres(texto)
 print(resultado)
 
+#Ejercicio 29
 def sucesion_mira_y_deci(n):
-    if n <= 0:
-        return []
-    
-    # Primer término de la sucesión
-    sucesion = ["1"]
-    
-    # Generamos los siguientes n-1 términos
-    for _ in range(n - 1):
-        anterior = sucesion[-1]
+    """
+    Recibe un número n y retorna una lista con los primeros n términos
+    de la sucesión "mirá y decí".
+    La sucesión arranca en 1, y cada término se genera describiendo
+    cuántas veces aparece seguido cada dígito del término anterior.
+    """
+    lista = [1]
+    while len(lista) < n:
+        anterior = str(lista[-1])
         nuevo = ""
-        contador = 1
-        
-        # Recorremos los dígitos del número anterior
-        for i in range(1, len(anterior)):
-            if anterior[i] == anterior[i - 1]:
-                contador += 1
-            else:
-                # Agregamos el conteo y el dígito
-                nuevo += str(contador) + anterior[i - 1]
-                contador = 1
-        
-        # Agregamos el último grupo de dígitos
-        nuevo += str(contador) + anterior[-1]
-        sucesion.append(nuevo)
-    
-    # Convertimos los elementos a enteros si se desea, o los dejamos como strings
-    # return [int(x) for x in sucesion]
-    return [int(x) if x.isdigit() else x for x in sucesion]
+        i = 0
+        while i < len(anterior):
+            dig = anterior[i]
+            cant = 1
+            while i+1 < len(anterior) and anterior[i+1] == dig:
+                cant += 1
+                i += 1
+            nuevo += str(cant) + dig
+            i += 1
+        lista.append(int(nuevo))
+    return lista
 
 # Ejemplo de uso:
 print(sucesion_mira_y_deci(9))

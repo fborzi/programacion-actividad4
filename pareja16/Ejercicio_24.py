@@ -1,69 +1,75 @@
-# Programa: Gestión de socios del Club CAVUL
 
-# Estructura: diccionario
-# Clave: DNI / Valor: [nombre, apellido, edad, cuota_al_dia]
-
+# carga de socios
 socios = {}
 
-# --- Carga de datos ---
-while True:
-    dni = int(input("Ingrese el DNI del socio (0 para finalizar): "))
-    if dni == 0:
-        break
-    
-    nombre = input("Ingrese el nombre: ")
-    apellido = input("Ingrese el apellido: ")
-    edad = int(input("Ingrese la edad: "))
-    cuota = input("¿Tiene la cuota al día? (s/n): ").lower() == 's'
-    
-    socios[dni] = [nombre, apellido, edad, cuota]
-    print("Socio cargado correctamente.\n")
+dni = input("Ingresar DNI (0 para terminar): ")
 
-# --- 1. Informar la cantidad de socios ---
-print(f"\nCantidad total de socios: {len(socios)}")
+while dni != "0":
+    apellido = input("Apellido: ")
+    nombre = input("Nombre: ")
+    edad = int(input("Edad: "))
+    cuota = input("Cuota al dia? (s/n): ")
 
-# --- 2. Informar la cantidad de socios morosos ---
-morosos = sum(1 for datos in socios.values() if not datos[3])
-print(f"Cantidad de socios morosos: {morosos}")
+    socios[dni] = {
+        "apellido": apellido,
+        "nombre": nombre,
+        "edad": edad,
+        "cuota_al_dia": (cuota.lower() == "s")
+    }
 
-# --- 3. Buscar socio por DNI 25.123.555 ---
-dni_buscar = 25123555
+    dni = input("Ingresar DNI (0 para terminar): ")
+
+
+# a) cantidad de socios
+print("Cantidad de socios:", len(socios))
+
+# b) cantidad de morosos
+morosos = 0
+for datos in socios.values():
+    if not datos["cuota_al_dia"]:
+        morosos += 1
+print("Cantidad de socios morosos:", morosos)
+
+# c) buscar socio 25123555
+dni_buscar = "25123555"
 if dni_buscar in socios:
-    nombre, apellido, _, _ = socios[dni_buscar]
-    print(f"Socio encontrado ({dni_buscar}): {nombre} {apellido}")
+    print("Socio", dni_buscar, ":", socios[dni_buscar]["nombre"], socios[dni_buscar]["apellido"])
 else:
-    print(f"No existe un socio con DNI {dni_buscar}.")
+    print("No existe socio con DNI", dni_buscar)
 
-# --- 4. Dar de alta nuevo socio ---
-nuevo_dni = 40151724
-socios[nuevo_dni] = ['Esteban', 'Quito', 17, True]
-print(f"Nuevo socio agregado: Esteban Quito (DNI: {nuevo_dni})")
+# d) alta de nuevo socio
+socios["40151724"] = {
+    "apellido": "Quito",
+    "nombre": "Esteban",
+    "edad": 17,
+    "cuota_al_dia": True
+}
 
-# --- 5. Informar DNI del socio de mayor edad ---
-dni_mayor = max(socios, key=lambda dni: socios[dni][2])
-print(f"El socio de mayor edad tiene DNI: {dni_mayor} ({socios[dni_mayor][0]} {socios[dni_mayor][1]})")
-
-# --- 6. Dar de baja al socio con DNI 15.188.125 ---
-dni_baja = 15188125
-if dni_baja in socios:
-    if socios[dni_baja][3]:  # cuota al día
-        del socios[dni_baja]
-        print(f"Socio con DNI {dni_baja} dado de baja correctamente.")
-    else:
-        print(f"No se puede dar de baja al socio {dni_baja} porque no tiene la cuota al día.")
-else:
-    print(f"No existe un socio con DNI {dni_baja}.")
-
-# --- 7. Registrar pago de cuota del socio 28.731.431 ---
-dni_pago = 28731431
-if dni_pago in socios:
-    socios[dni_pago][3] = True
-    print(f"Socio {dni_pago} ahora tiene la cuota al día.")
-else:
-    print(f"No existe un socio con DNI {dni_pago}.")
-
-# --- Resumen final (opcional) ---
-print("\nListado actualizado de socios:")
+# e) socio de mayor edad
+mayor_dni = ""
+mayor_edad = -1
 for dni, datos in socios.items():
-    nombre, apellido, edad, cuota = datos
-    print(f"DNI: {dni} | {nombre} {apellido}, {edad} años, Cuota al día: {'Sí' if cuota else 'No'}")
+    if datos["edad"] > mayor_edad:
+        mayor_edad = datos["edad"]
+        mayor_dni = dni
+print("Socio de mayor edad (DNI):", mayor_dni)
+
+# f) baja del socio 15188125 si cuota al día
+dni_baja = "15188125"
+if dni_baja in socios:
+    if socios[dni_baja]["cuota_al_dia"]:
+        del socios[dni_baja]
+        print("Socio", dni_baja, "eliminado")
+    else:
+        print("No se puede eliminar al socio", dni_baja, "porque está moroso")
+else:
+    print("No existe socio con DNI", dni_baja)
+
+# g) registrar pago de cuota para 28731431
+dni_pago = "28731431"
+if dni_pago in socios:
+    socios[dni_pago]["cuota_al_dia"] = True
+    print("Se registró el pago del socio", dni_pago)
+else:
+    print("No existe socio con DNI", dni_pago)
+

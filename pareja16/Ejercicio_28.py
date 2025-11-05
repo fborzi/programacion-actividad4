@@ -1,62 +1,36 @@
-# Programa para gestionar una colección de películas
-
-# Estructura principal: diccionario con clave = título
-# Cada valor será otro diccionario con: director, año y lista de actores
 
 peliculas = {}
 
-# --- Carga de datos ---
-while True:
-    titulo = input("Ingrese el título de la película (o 'fin' para terminar): ")
-    if titulo.lower() == 'fin':
-        break
+titulo = input("Titulo: ")
+while titulo != "fin":
+    director = input("Director: ")
+    anio = int(input("Año: "))
+    actores = input("Actores principales separados por coma: ").split(",")
 
-    director = input("Ingrese el director: ")
-    anio = int(input("Ingrese el año de estreno: "))
-    actores = input("Ingrese los actores principales separados por comas: ").split(',')
+    peliculas[titulo] = {"director": director, "anio": anio, "actores": actores}
 
-    # Limpiamos espacios en los nombres de actores
-    actores = [actor.strip() for actor in actores]
+    titulo = input("Titulo: ")
 
-    peliculas[titulo] = {
-        "director": director,
-        "anio": anio,
-        "actores": actores
-    }
-
-print("\n--- Datos cargados correctamente ---\n")
-
-# --- a) Cantidad de películas dirigidas por cada director ---
 directores = {}
+for t in peliculas:
+    d = peliculas[t]["director"]
+    directores[d] = directores.get(d, 0) + 1
 
-for datos in peliculas.values():
-    director = datos["director"]
-    directores[director] = directores.get(director, 0) + 1
+print("Peliculas por director:", directores)
 
-print("Cantidad de películas por director:")
-for d, cant in directores.items():
-    print(f"  {d}: {cant}")
+director_mayor = max(directores, key=directores.get)
+print("Director con más películas:", director_mayor)
 
-# --- b) Director con más películas ---
-max_director = max(directores, key=directores.get)
-print(f"\nEl director que dirigió más películas es: {max_director} ({directores[max_director]} películas)")
-
-# --- c) Dado el título, mostrar actores ---
-titulo_buscar = input("\nIngrese el título de una película para ver sus actores: ")
-if titulo_buscar in peliculas:
-    print("Actores principales:")
-    for actor in peliculas[titulo_buscar]["actores"]:
-        print("  -", actor)
+consulta_titulo = input("Ingresar titulo para ver actores: ")
+if consulta_titulo in peliculas:
+    print("Actores:", peliculas[consulta_titulo]["actores"])
 else:
-    print("Esa película no está registrada.")
+    print("No existe esa pelicula")
 
-# --- d) Dado un actor, listar películas ---
-actor_buscar = input("\nIngrese el nombre de un actor para ver sus películas: ").strip()
-peliculas_actor = [titulo for titulo, datos in peliculas.items() if actor_buscar in datos["actores"]]
+consulta_actor = input("Ingresar actor para ver peliculas: ")
+lista = []
+for t in peliculas:
+    if consulta_actor in peliculas[t]["actores"]:
+        lista.append(t)
+print("Peliculas donde actua:", lista)
 
-if peliculas_actor:
-    print(f"\nPelículas donde actúa {actor_buscar}:")
-    for p in peliculas_actor:
-        print("  -", p)
-else:
-    print(f"{actor_buscar} no aparece en ninguna película registrada.")

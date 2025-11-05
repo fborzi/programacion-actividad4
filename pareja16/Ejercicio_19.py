@@ -1,37 +1,38 @@
-from collections import Counter
 
-total_numeros = 0
+from funciones import digitos_repetidos
+
+contador = 0
+acumulador = 0
 mayores_478 = 0
-suma_total = 0
 
-while True:
-    n = int(input("Ingresá un número entero: "))
-    total_numeros += 1
-    suma_total += n
+# primer número
+n = int(input("Ingresar numero: "))
+repetidos = digitos_repetidos(n)
 
-    # Convertimos a string para analizar dígitos
-    digitos = [int(d) for d in str(abs(n))]  # abs por si hay negativos
-    contador = Counter(digitos)
-
-    # Filtramos los dígitos que se repiten
-    repetidos = [d for d, c in contador.items() if c > 1]
-
+# mientras el número tenga dígitos repetidos sigo pidiendo números
+while len(repetidos) != 0:
+    contador += 1
+    acumulador += n
     if n > 478:
         mayores_478 += 1
 
-    if repetidos:
-        suma_repetidos = sum(repetidos)
-        cantidad_repetidos = len(repetidos)
-        print(f"Suma de dígitos repetidos: {suma_repetidos}")
-        print(f"Cantidad de dígitos repetidos: {cantidad_repetidos}")
-    else:
-        print("No hay dígitos repetidos. Fin del programa.")
-        break
+    print("Suma dígitos repetidos:", sum(int(x) for x in repetidos))
+    print("Cantidad dígitos repetidos:", len(repetidos))
 
-# Cálculos finales
-porcentaje_mayores = (mayores_478 / total_numeros) * 100
-promedio = suma_total / total_numeros
+    n = int(input("Ingresar numero: "))
+    repetidos = digitos_repetidos(n)
 
-print("\n--- Resultados finales ---")
-print(f"Porcentaje de números > 478: {porcentaje_mayores:.2f}%")
-print(f"Promedio de los números procesados: {promedio:.2f}")
+# el que corta también se procesa (pero con 0 en repetidos)
+contador += 1
+acumulador += n
+if n > 478:
+    mayores_478 += 1
+
+print("Suma dígitos repetidos:", 0)
+print("Cantidad dígitos repetidos:", 0)
+
+# informe final
+print(" Informe Final ")
+print("Porcentaje mayores a 478:", (mayores_478*100)/contador, "%")
+print("Promedio:", acumulador/contador)
+

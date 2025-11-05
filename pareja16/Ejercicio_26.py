@@ -1,61 +1,28 @@
-# Versión 1: Sin almacenar las ciudades
 
-def ciudades_por_pais():
-    ciudades_por_pais = {}
-    total_ciudades = 0
+lista = []
 
-    while True:
-        ciudad = input("Ingrese el nombre de la ciudad (zz para finalizar): ")
-        if ciudad.lower() == "zz":
-            break
+ciudad = input("Ingresar ciudad: ")
 
-        pais = input("Ingrese el país al que pertenece: ")
+while ciudad != "zz":
+    pais = input("Ingresar país de esa ciudad: ")
 
-        # Incrementar el contador para el país
-        if pais in ciudades_por_pais:
-            ciudades_por_pais[pais] += 1
-        else:
-            ciudades_por_pais[pais] = 1
+    lista.append([ciudad, pais])
 
-        total_ciudades += 1
+    ciudad = input("Ingresar ciudad: ")
 
-    # Resultados
-    print(f"\nCantidad total de ciudades ingresadas: {total_ciudades}")
-    print("Cantidad de ciudades por país:")
-    for pais, cantidad in ciudades_por_pais.items():
-        print(f"- {pais}: {cantidad}")
-
-# Ejecución
-ciudades_por_pais()
+print("Total de ciudades ingresadas:", len(lista))
 
 
-# Versión 2: Almacenando las ciudades en una lista
+pais_ciudades = {}
 
-def ciudades_y_paises():
-    lista_ciudades = []
+for item in lista:
+    pais = item[1]
 
-    # Carga de datos
-    while True:
-        ciudad = input("Ingrese el nombre de la ciudad (zz para finalizar): ")
-        if ciudad.lower() == "zz":
-            break
+    if pais in pais_ciudades:
+        pais_ciudades[pais] += 1
+    else:
+        pais_ciudades[pais] = 1
 
-        pais = input("Ingrese el país al que pertenece: ")
-        lista_ciudades.append([ciudad, pais])
+print("Ciudades por país:", pais_ciudades)
 
-    # Procesamiento
-    ciudades_por_pais = {}
-    for ciudad, pais in lista_ciudades:
-        if pais in ciudades_por_pais:
-            ciudades_por_pais[pais] += 1
-        else:
-            ciudades_por_pais[pais] = 1
 
-    # Resultados
-    print(f"\nCantidad total de ciudades ingresadas: {len(lista_ciudades)}")
-    print("Cantidad de ciudades por país:")
-    for pais, cantidad in ciudades_por_pais.items():
-        print(f"- {pais}: {cantidad}")
-
-# Ejecución
-ciudades_y_paises()

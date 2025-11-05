@@ -1,20 +1,30 @@
-from collections import Counter
 
-texto = input("Ingresá un texto: ")
+texto = input("Ingresar un texto: ")
 
-# Separar palabras (por espacios)
+# separo en palabras usando espacio como separador
 palabras = texto.split()
-print(f"Cantidad de palabras: {len(palabras)}")
+
+print("Cantidad de palabras:", len(palabras))
+print()
 
 for palabra in palabras:
-    # Convertir a minúsculas y filtrar solo letras
-    solo_letras = [c.lower() for c in palabra if c.isalpha()]
-    contador = Counter(solo_letras)
+    # trabajar solo con letras, sin dígitos ni símbolos
+    solo_letras = ""
+    for c in palabra:
+        if c.isalpha():
+            solo_letras += c
 
-    # Buscar las letras repetidas
-    repetidas = [letra for letra, cant in contador.items() if cant > 1]
+    # pasar a minúsculas
+    solo_letras = solo_letras.lower()
 
-    if repetidas:
-        print(f"Letras repetidas en '{palabra}': {', '.join(repetidas)}")
+    repetidas = []
+    for letra in solo_letras:
+        if solo_letras.count(letra) > 1 and letra not in repetidas:
+            repetidas.append(letra)
+
+    # salida para esa palabra
+    if len(repetidas) > 0:
+        print("En '" + palabra + "' se repiten:", repetidas)
     else:
-        print(f"Letras repetidas en '{palabra}': ninguna")
+        print("En '" + palabra + "' no hay letras repetidas")
+

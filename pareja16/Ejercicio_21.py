@@ -1,58 +1,51 @@
-import unicodedata
 
-def normalizar(texto):
-    """
-    Quita acentos y convierte a minúsculas.
-    """
-    texto = texto.lower()
-    return ''.join(
-        c for c in unicodedata.normalize('NFD', texto)
-        if unicodedata.category(c) != 'Mn'
-    )
+texto = ""
+linea = input("Ingresar linea (terminar con *): ")
 
-texto_completo = ""
+# mientras NO termine con *
+while linea[-1] != "*":
+    texto += linea + " "
+    linea = input()
 
-# Lectura del texto hasta línea que termine con '*'
-while True:
-    linea = input("Ingresá una línea (terminá con * para finalizar): ")
-    texto_completo += " " + linea
-    if linea.strip().endswith('*'):
-        break
+# saco el * de la última línea
+texto += linea[:-1] + " "
 
-# Eliminar el asterisco final
-texto_completo = texto_completo.replace('*', '')
+# pasamos a minúsculas
+texto = texto.lower()
 
-# Normalizar (quitar acentos, pasar a minúsculas)
-texto_normalizado = normalizar(texto_completo)
+# 1) palabras con 3 vocales distintas
+vocales = "aeiou"
+palabras = texto.replace(".", "").split()
 
-# ---- 1. Palabras con al menos 3 vocales diferentes ----
-vocales = {'a', 'e', 'i', 'o', 'u'}
-palabras = texto_normalizado.split()
-palabras_con_3_vocales = []
+print("Palabras con al menos 3 vocales diferentes:")
 
 for palabra in palabras:
-    letras_vocales = {letra for letra in palabra if letra in vocales}
-    if len(letras_vocales) >= 3:
-        palabras_con_3_vocales.append(palabra)
+    distintas = set()
+    for letra in palabra:
+        if letra in vocales:
+            distintas.add(letra)
+    if len(distintas) >= 3:
+        print(palabra)
 
-# ---- 2. Cantidad de oraciones ----
-oraciones = [o.strip() for o in texto_normalizado.split('.') if o.strip() != '']
-cantidad_oraciones = len(oraciones)
+# 2) cantidad de oraciones
+oraciones = texto.count(".")
 
-# ---- 3. Porcentaje de oraciones con más de 5 palabras ----
-oraciones_largas = 0
-for oracion in oraciones:
-    cant_palabras = len(oracion.split())
-    if cant_palabras > 5:
-        oraciones_largas += 1
+print("Cantidad total de oraciones:", oraciones)
 
-if cantidad_oraciones > 0:
-    porcentaje_largas = (oraciones_largas / cantidad_oraciones) * 100
+# 3) porcentaje de oraciones con más de 5 palabras
+oraciones_texto = texto.split(".")
+
+largas = 0
+for oracion in oraciones_texto:
+    o = oracion.strip()
+    if o != "":
+        if len(o.split()) > 5:
+            largas += 1
+
+if oraciones > 0:
+    porcentaje = (largas * 100) / oraciones
 else:
-    porcentaje_largas = 0
+    porcentaje = 0
 
-# ---- Resultados ----
-print("\n--- RESULTADOS ---")
-print(f"Palabras con al menos 3 vocales diferentes: {', '.join(palabras_con_3_vocales) if palabras_con_3_vocales else 'ninguna'}")
-print(f"Cantidad de oraciones: {cantidad_oraciones}")
-print(f"Porcentaje de oraciones con más de 5 palabras: {porcentaje_largas:.2f}%")
+print("Porcentaje de oraciones con más de 5 palabras:", porcentaje, "%")
+
