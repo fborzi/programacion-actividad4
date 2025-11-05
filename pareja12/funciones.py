@@ -71,25 +71,18 @@ def piedra_papel_tijera(uno, dos):
 #---------------------------------------------------------------------------------------#
 """FUNCION EJERCICIO 9"""
 def digitos(numero):
-    """
-    Retorna una lista con los dígitos que componen al número.
+    """Versión usando operaciones matemáticas"""
+    numero = abs(numero)  # Manejamos números negativos
     
-    Args:
-        numero: número entero (puede ser positivo o negativo)
+    if numero == 0:
+        return [0]
     
-    Returns:
-        lista con los dígitos del número
-    """
-    # Convertimos a string, quitamos el signo si es negativo
-    # y convertimos cada caracter de vuelta a entero
-    return [int(d) for d in str(abs(numero))]
-
-
-# Ejemplos de uso
-print(digitos(18413))  # [1, 8, 4, 1, 3]
-print(digitos(567))    # [5, 6, 7]
-print(digitos(0))      # [0]
-print(digitos(-1234))  # [1, 2, 3, 4]
+    resultado = []
+    while numero > 0:
+        resultado.insert(0, numero % 10)  # Extraemos el último dígito
+        numero //= 10  # Removemos el último dígito
+    
+    return resultado
 #---------------------------------------------------------------------------------------#
 """FUNCION EJERCICIO 10"""
 def borrar_adyacentes(lista):
@@ -112,7 +105,34 @@ def borrar_adyacentes(lista):
     return resultado
 #---------------------------------------------------------------------------------------#
 """FUNCION 11"""
-
+def ocurrencias(lista):
+    """
+    Retorna una lista con cada elemento y sus ocurrencias contiguas.
+    
+    Args:
+        lista: lista con elementos de cualquier tipo
+    
+    Returns:
+        lista de listas [elemento, cantidad_contigua]
+    """
+    if not lista:  
+        return []
+    
+    resultado = []
+    elemento_actual = lista[0]
+    contador = 1
+    
+    for i in range(1, len(lista)):
+        if lista[i] == elemento_actual:
+            contador += 1
+        else:
+            resultado.append([elemento_actual, contador])
+            elemento_actual = lista[i]
+            contador = 1
+    
+    resultado.append([elemento_actual, contador])
+    
+    return resultado
 
 #---------------------------------------------------------------------------------------#
 """FUNCION EJERCICIO 12"""
