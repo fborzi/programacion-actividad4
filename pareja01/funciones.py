@@ -132,6 +132,8 @@ def suma_digitos(n):
 def sumatoria_digitos(lista):
     
     return [suma_digitos(num) for num in lista]
+
+
 # Retorna el índice del mayor número en la lista.
 # parametro lista: []
 def indice_mayor(lista):
@@ -158,3 +160,40 @@ def dos_sumandos(lista, resultado):
                 return (i, j)
     print("No se encontraron dos sumandos que den el resultado esperado.")
     return None
+
+#obtiene la ciudad y provincia de una persona a partir de su DNI.
+#parametro personas: [] 
+#parametro DNI: int
+def obtenerCiudad(personas, DNI):
+    for persona in personas:
+        if persona[1] == DNI:
+            print("Ciudad a la que pertenece:", persona[2])
+            return persona[2]
+    print("DNI no encontrado")
+    return None
+
+
+#obtiene la provincia de una persona a partir de su DNI.
+#parametro personas: []
+#parametro ciudades: []
+#parametro DNI: int
+def obtenerProvincia(personas, ciudades, DNI):
+    ciudad = obtenerCiudad(personas, DNI)
+    if ciudad:
+        for c in ciudades:
+            if c[0] == ciudad:
+                print("Provincia a la que pertenece:", c[1])
+                return c[1]
+    print("Ciudad no encontrada")
+    return None
+
+
+#cuenta la cantidad de personas que viven en una provincia determinada.
+#parametro personas: [] 
+#parametro ciudades: []
+#parametro provincia: str
+def contarPoblacion(personas, ciudades, provincia):
+    cantidad = sum(1 for p in personas if obtenerProvincia([p], ciudades, p[1]) == provincia)
+    print("Cantidad de personas que viven en la provincia de", provincia, ":", cantidad)
+    return cantidad
+
