@@ -164,6 +164,31 @@ def sumatoria_digitos(lista):
         resultado.append(suma)
     return resultado
 #---------------------------------------------------------------------------------------#
+"""FUNCION EJERCICIO 13"""
+def indice_mayor(lista):
+    """
+    Retorna el índice donde se encuentra el mayor número de la lista.
+    
+    Args:
+        lista: lista de números
+    
+    Returns:
+        índice del mayor elemento
+    """
+    if not lista: 
+        return None
+    
+    indice_max = 0
+    valor_max = lista[0]
+    
+    for i in range(1, len(lista)):
+        if lista[i] > valor_max:
+            valor_max = lista[i]
+            indice_max = i
+    
+    return indice_max
+
+#---------------------------------------------------------------------------------------#
 """FUNCIONES EJERCICIO 14"""
 def dos_sumando(lista, resultado):
     """
