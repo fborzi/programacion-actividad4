@@ -62,3 +62,13 @@ def nombres_mayusculas(nombres):
 
     print("\nLista de nombres en mayúsculas:", nombresMayus)
     return nombresMayus
+
+
+# Retorna una lista con los dígitos que componen al número pasado por parámetro.
+# parametro numero: int
+def digitos(numero):
+    digitos = []
+    for digito in str(numero):
+        digitos.append(int(digito))
+    print(digitos) 
+    return digitos
