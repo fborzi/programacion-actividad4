@@ -20,7 +20,34 @@ def minimo_elemento(lista):
     
     return minimo
 #---------------------------------------------------------------------------------------#
-"""FUNCION EJERCICOIO 8"""
+"""FUNCION 7"""
+def dos_minimos(lista):
+    """
+    Devuelve los dos valores menores de una lista.
+    Si hay menos de dos elementos, completa con None.
+    
+    Args:
+        lista: Lista de elementos comparables
+        
+    Returns:
+        Tupla con los dos menores valores (o None si faltan elementos)
+    """
+    if len(lista) == 0:
+        return (None, None)
+    elif len(lista) == 1:
+        return (lista[0], None)
+    else:
+        # Ordenar la lista y tomar los dos primeros elementos
+        lista_ordenada = sorted(lista)
+        return (lista_ordenada[0], lista_ordenada[1])
+
+
+# Ejemplos de uso
+print(dos_minimos([23, 456, 12, 16, -4, 56]))  # (-4, 12)
+print(dos_minimos([4]))                         # (4, None)
+print(dos_minimos([]))                          # (None, None)
+#---------------------------------------------------------------------------------------#
+"""FUNCION EJERCICIO 8"""
 def piedra_papel_tijera(uno, dos):
     """
     Determina el ganador del juego piedra, papel o tijeras.
@@ -61,6 +88,10 @@ def borrar_adyacentes(lista):
             resultado.append(lista[i])
     
     return resultado
+#---------------------------------------------------------------------------------------#
+"""FUNCION 11"""
+
+
 #---------------------------------------------------------------------------------------#
 """FUNCION EJERCICIO 12"""
 def suma_digitos(n):
