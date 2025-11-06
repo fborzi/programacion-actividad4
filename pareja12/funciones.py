@@ -297,3 +297,21 @@ def digitos_repetidos(n):
             repetidos.append(int(digito))
 
     return repetidos
+#---------------------------------------------------------------------------------------#
+"""FUNCION EJERCICIO 25"""
+def frecuencia_caracteres(cadena):
+    """
+    retorna un diccionario con la frecuencia de cada caracter en la cadena.
+    @params: cadena - String con el texto a analizar
+    @returns: diccionario donde la clave son los caracteres y los valores son sus frecuencias.
+    """
+    frecuencia = {}
+
+    for caracter in cadena:
+        if caracter in frecuencia:
+            frecuencia[caracter] += 1
+        else:
+            frecuencia[caracter] = 1
+
+    return frecuencia
+#---------------------------------------------------------------------------------------#
