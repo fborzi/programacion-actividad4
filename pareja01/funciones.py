@@ -197,3 +197,169 @@ def contarPoblacion(personas, ciudades, provincia):
     print("Cantidad de personas que viven en la provincia de", provincia, ":", cantidad)
     return cantidad
 
+
+# Retorna una lista conteniendo los dígitos que se repiten en n. Cada dígito deberá aparecer una única vez en la lista, aunque se repita varias veces.
+# parametro n: int
+def digitos_repetidos(n):
+    str_n = str(n)
+    repetidos = set()
+    vistos = set()
+    
+    for digito in str_n:
+        if digito in vistos:
+            repetidos.add(int(digito))
+        else:
+            vistos.add(digito)
+    print(repetidos)
+    return list(repetidos)
+
+
+# recibe una oracion y calcula cuantas palabras contiene
+def cantidad_palabras(frase):
+    palabras = frase.split()
+    cantidad = len(palabras)
+    print(f"Cantidad de palabras: {cantidad}")
+
+    for palabra in palabras:
+        letras_vistas = set()
+        letras_repetidas = set()
+        for letra in palabra.lower():
+            if letra.isalpha():
+                if letra in letras_vistas:
+                    letras_repetidas.add(letra)
+                else:
+                    letras_vistas.add(letra)
+        if letras_repetidas:
+            print(f"Letras repetidas en '{palabra}': {', '.join(sorted(letras_repetidas))}")
+        else:
+            print(f"No hay letras repetidas en '{palabra}'")
+
+
+
+habitantes = {
+    "Junín": 102023,
+    "Rojas": 28654,
+    "Pergamino": 80569
+}
+
+def informar_habitantes(ciudad):
+    if ciudad in habitantes:
+        return habitantes[ciudad]
+    print("La ciudad ", ciudad," no existe en el registro")
+
+def agregar_ciudad(ciudad, poblacion):
+    habitantes[ciudad] = poblacion
+
+def eliminar_ciudad(ciudad):
+    if ciudad in habitantes:
+        del habitantes[ciudad]
+
+def incrementar_habitantes(ciudad, cantidad):
+    if ciudad in habitantes:
+        habitantes[ciudad] += cantidad
+
+def modificar_habitantes(ciudad, nueva_cantidad):
+    if ciudad in habitantes:
+        habitantes[ciudad] = nueva_cantidad
+
+
+class Socio:
+    def __init__(self, nombre, apellido, dni, edad, cuota_al_dia):
+            self.nombre = nombre
+            self.apellido = apellido
+            self.dni = dni
+            self.edad = edad
+            self.cuota_al_dia = cuota_al_dia
+
+def ingresar_socios():
+    socios = {}
+    while True:
+        dni = input("Ingrese DNI (0 para terminar): ")
+        if dni == "0":
+            break
+        nombre = input("Nombre: ")
+        apellido = input("Apellido: ")
+        edad = int(input("Edad: "))
+        cuota_al_dia = input("¿Cuota al día? (s/n): ").lower() == 's'
+        socios[dni] = Socio(nombre, apellido, dni, edad, cuota_al_dia)
+    return socios
+
+def cantidad_socios(socios):
+    return len(socios)
+
+def cantidad_morosos(socios):
+    return sum(1 for socio in socios.values() if not socio.cuota_al_dia)
+
+def buscar_socio(socios, dni):
+    if dni in socios:
+        socio = socios[dni]
+        return f"Socio encontrado: {socio.nombre} {socio.apellido}"
+    return "No existe un socio con ese DNI"
+
+def agregar_socio(socios, dni, nombre, apellido, edad, cuota_al_dia):
+    socios[dni] = Socio(nombre, apellido, dni, edad, cuota_al_dia)
+
+def socio_mayor_edad(socios):
+    if not socios:
+        return "No hay socios registrados"
+    mayor = max(socios.values(), key=lambda x: x.edad)
+    return mayor.dni
+
+def dar_baja_socio(socios, dni):
+    if dni not in socios:
+        return "El socio no existe"
+    if not socios[dni].cuota_al_dia:
+        return "No se puede dar de baja. El socio tiene cuotas pendientes"
+    del socios[dni]
+    return "Socio dado de baja exitosamente"
+
+def pagar_cuota(socios, dni):
+    if dni in socios:
+        socios[dni].cuota_al_dia = True
+        return "Cuota registrada como pagada"
+    return "Socio no encontrado"
+
+
+
+def version_sin_almacenamiento():
+    """Versión que no almacena las ciudades"""
+    total_ciudades = 0
+    ciudades_por_pais = {}
+    
+    while True:
+        ciudad = input("Ingrese nombre de la ciudad (zz para terminar): ").strip()
+        if ciudad.lower() == "zz":
+            break
+            
+        pais = input("Ingrese país: ").strip()
+        total_ciudades += 1
+        
+        # Actualizar contador del país
+        ciudades_por_pais[pais] = ciudades_por_pais.get(pais, 0) + 1
+    return total_ciudades, ciudades_por_pais
+
+def version_con_almacenamiento():
+    """Versión que almacena las ciudades en una lista"""
+    ciudades = []
+    
+    while True:
+        ciudad = input("Ingrese nombre de la ciudad (zz para terminar): ").strip()
+        if ciudad.lower() == "zz":
+            break
+            
+        pais = input("Ingrese país: ").strip()
+        ciudades.append([ciudad, pais])
+    
+    # Procesar la lista para obtener estadísticas
+    ciudades_por_pais = {}
+    for ciudad, pais in ciudades:
+        ciudades_por_pais[pais] = ciudades_por_pais.get(pais, 0) + 1
+    
+    return len(ciudades), ciudades_por_pais
+
+def mostrar_resultados(total, por_pais):
+    """Muestra los resultados de cualquiera de las dos versiones"""
+    print(f"\nTotal de ciudades ingresadas: {total}")
+    print("\nCiudades por país:")
+    for pais, cantidad in por_pais.items():
+        print(f"{pais}: {cantidad}")
