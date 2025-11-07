@@ -1,4 +1,4 @@
-
+import unicodedata
 # Devuelve los dos valores minimos de una lista de numeros.
 # Si la lista tiene menos de dos elementos, devuelve None en el segundo valor.
 # parametro lista: []
@@ -363,3 +363,178 @@ def mostrar_resultados(total, por_pais):
     print("\nCiudades por país:")
     for pais, cantidad in por_pais.items():
         print(f"{pais}: {cantidad}")
+
+
+    # Cuenta cuántas veces aparece cada dígito en un numero.
+    # Parámetro: numero (int) - El número a analizar
+def contar_digitos(numero):
+    numero_str = str(numero)
+    conteo = {}
+    for digito in numero_str:
+        if digito in conteo:
+            conteo[digito] = conteo[digito] + 1
+        else:
+            conteo[digito] = 1
+            print(conteo)
+    return conteo
+
+
+    # Verifica si hay algún dígito que se repita.
+    # Parámetro: conteo_digitos (dict) - Diccionario con el conteo de cada dígito
+    # Retorna: True si hay repetidos, False si no hay
+def tiene_digitos_repetidos(conteo_digitos):
+    for cantidad in conteo_digitos.values():
+        if cantidad > 1:
+            return True
+    print("No hay dígitos repetidos.")
+    return False
+
+
+    # Calcula la suma y cantidad de dígitos que se repiten.
+    # Parámetro: conteo_digitos (dict) - Diccionario con el conteo de cada dígito
+def calcular_suma_y_cantidad_repetidos(conteo_digitos):
+    suma_repetidos = 0  
+    cantidad_repetidos = 0
+    
+    # Recorrer el diccionario
+    for digito, cantidad in conteo_digitos.items():
+        if cantidad > 1:
+            suma_repetidos = suma_repetidos + int(digito)
+            cantidad_repetidos = cantidad_repetidos + 1
+    print(f"Suma de dígitos repetidos: {suma_repetidos}, Cantidad de dígitos repetidos: {cantidad_repetidos}")
+    return suma_repetidos, cantidad_repetidos
+
+    # Calcula el porcentaje de números mayores a 478.
+    # Parámetros: cantidad_mayores (int), total (int)
+def calcular_porcentaje(cantidad_mayores, total):
+    if total == 0:
+        print("No se procesaron números, porcentaje es 0.")
+        return 0
+    
+    porcentaje = (cantidad_mayores * 100) / total
+    print(f"Porcentaje de números mayores que 478: {porcentaje}%")
+    return porcentaje
+
+# Calcula el promedio de los números procesados.
+def calcular_promedio(suma_total, cantidad):
+    if cantidad == 0:
+        return 0
+    
+    promedio = suma_total / cantidad
+    print(f"Promedio de los números procesados: {promedio}")
+    return promedio
+
+#Muestra las estadísticas de un número específico.
+
+def mostrar_estadisticas_numero(numero, suma_rep, cant_rep):
+    print(f"\nAnalizando el número: {numero}")
+    print(f"Suma de dígitos repetidos: {suma_rep}")
+    print(f"Cantidad de dígitos que se repiten: {cant_rep}")
+    print()
+
+
+def mostrar_estadisticas_finales(cant_numeros, cant_mayores, suma_total):
+    if cant_numeros > 0:
+        print("ESTADÍSTICAS FINALES:")
+        porcentaje = calcular_porcentaje(cant_mayores, cant_numeros)
+        print(f"\nPorcentaje de números mayores que 478: {porcentaje:.2f}%")
+        promedio = calcular_promedio(suma_total, cant_numeros)
+        print(f"\nPromedio de los números procesados: {promedio:.2f}")
+        print(f"\nTotal de números procesados: {cant_numeros}")
+        
+        
+# Normaliza una palabra quitando acentos
+def normalizar(palabra):
+    return ''.join(c for c in unicodedata.normalize('NFD', palabra)
+                   if unicodedata.category(c) != 'Mn').lower()
+
+# Retorna True si la palabra tiene al menos 3 vocales diferentes
+def tiene_tres_vocales_diferentes(palabra):
+    palabra = normalizar(palabra)
+    vocales = {'a', 'e', 'i', 'o', 'u'}
+    encontradas = set()
+
+    for letra in palabra:
+        if letra in vocales:
+            encontradas.add(letra)
+    
+    return len(encontradas) >= 3
+
+# Cuenta oraciones en un texto
+def contar_oraciones(texto):
+    return texto.count('.')
+
+# Cuenta palabras en una oración
+def contar_palabras(oracion):
+    return len(oracion.split())
+
+
+def procesar_palabras():
+    texto = ""
+    print("Ingrese texto (finalice con una línea que termine en '*'):")
+
+    while True:
+            linea = input()
+            texto += " " + linea  # acumulamos todo el texto
+            if linea.endswith('*'):
+                texto = texto.rstrip('*')  # quitamos el *
+                break
+
+    # Procesar palabras
+    palabras = texto.replace('.', ' ').split()
+    palabras_validas = [p for p in palabras if tiene_tres_vocales_diferentes(p)]
+
+    # Contar oraciones
+    total_oraciones = contar_oraciones(texto)
+
+    # Calcular porcentaje de oraciones con más de 5 palabras
+    oraciones = texto.split('.')
+    oraciones_con_mas_5 = sum(1 for o in oraciones if contar_palabras(o) > 5)
+
+    porcentaje_mas_5 = (oraciones_con_mas_5 * 100 / total_oraciones) if total_oraciones > 0 else 0
+
+
+    print("\nPalabras con al menos 3 vocales diferentes:")
+    for p in palabras_validas:
+        print(p)
+
+    print("\nCantidad total de oraciones:", total_oraciones)
+    print(f"Porcentaje de oraciones con más de cinco palabras: {porcentaje_mas_5:.2f}%")
+    
+    
+#recibe una cadena de texto y retorna la cantidad de veces que aparecen cada uno de los caracteres de la cadena 
+def frecuencia_caracteres(cadena):
+    frecuencia = {}
+    for caracter in cadena:
+        frecuencia[caracter] = frecuencia.get(caracter, 0) + 1
+    print(frecuencia)
+    return frecuencia
+
+
+
+def sucesion_mira_y_deci(n):
+    if n <= 0:
+        return []
+
+    lista = ["1"] 
+
+    for _ in range(n - 1):
+        actual = lista[-1]
+        nuevo = ""
+        count = 1
+
+        # Recorremos el número actual para generar el siguiente
+        for i in range(1, len(actual)):
+            if actual[i] == actual[i - 1]:
+                count += 1
+            else:
+                nuevo += str(count) + actual[i - 1]
+                count = 1
+
+        # Agregar el último grupo leido
+        nuevo += str(count) + actual[-1]
+        lista.append(nuevo)
+
+    # Convertimos a enteros
+    print([int(x) for x in lista])
+    return [int(x) for x in lista]
