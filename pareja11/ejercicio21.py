@@ -1,17 +1,4 @@
-import unicodedata
-
-def normalizar(texto):
-    texto = texto.lower()
-    return ''.join(
-        c for c in unicodedata.normalize('NFD', texto)
-        if unicodedata.category(c) != 'Mn'
-    )
-
-def tiene_tres_vocales_diferentes(palabra):
-    vocales = {'a', 'e', 'i', 'o', 'u'}
-    usadas = {letra for letra in palabra if letra in vocales}
-    return len(usadas) >= 3
-
+from funciones import normalizar, tiene_tres_vocales_diferentes
 
 texto = ""
 linea = input("Ingrese una línea (finalice con * al final): ")
