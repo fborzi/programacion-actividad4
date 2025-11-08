@@ -31,3 +31,37 @@ def ocurrencias(lista):
     
     resultado.append([elemento_actual, contador])
     return resultado
+
+def indice_mayor(lista):
+    """Retorna el índice donde se encuentra el mayor número de la lista"""
+    if not lista:
+        return None
+    return lista.index(max(lista))
+
+def obtenerCiudad(personas, DNI):
+    """Retorna la ciudad donde vive una persona según lo que dice su DNI"""
+    for persona in personas:
+        if persona[1] == DNI:
+            return persona[2]
+    return None
+
+def obtenerProvincia(personas, ciudades, DNI):
+    """Retorna la provincia donde vive una persona según lo que dice su DNI"""
+    ciudad = obtenerCiudad(personas, DNI)
+    if ciudad is None:
+        return None
+    
+    for ciudad_info in ciudades:
+        if ciudad_info[0] == ciudad:
+            return ciudad_info[1]
+    return None
+
+
+def contarPoblacion(personas, ciudades, provincia):
+    """Cuenta cuántas personas viven en una provincia"""
+    contador = 0
+    for persona in personas:
+        dni = persona[1]
+        if obtenerProvincia(personas, ciudades, dni) == provincia:
+            contador += 1
+    return contador
