@@ -315,3 +315,29 @@ def frecuencia_caracteres(cadena):
 
     return frecuencia
 #---------------------------------------------------------------------------------------#
+"""FUNCION EJEJRCICIO 29"""
+def sucesion_mira_y_deci(n):
+    """
+    Genera los primeros n números de la sucesion "mira y di".
+    @params: n- cantidad de números a generar
+    @returns: lista con los primeros n números de la sucesion
+    """
+    if n <= 0:
+        return[]
+    sucesion = [1]
+
+    for i in range(n - 1):
+        numero_actual = str(sucesion[-1])
+
+        siguente = ""
+        i = 0
+
+        while i < len(numero_actual):
+            digito = numero_actual[i]
+            contador = 1
+
+            while i + 1 < len(numero_actual) and numero_actual[i + 1] == digito:
+                contador += 1
+            siguente = siguente + str(contador) + digito
+        sucesion.append(int(siguente))
+    return sucesion
