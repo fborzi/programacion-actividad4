@@ -79,3 +79,18 @@ def dos_sumandos(lista, resultado):
             if lista[i] + lista[j] == resultado:
                 return [i, j]
     return []  
+
+#Ejercicio18
+
+def digitos_repetidos(n):
+    """Función que recibe un número entero y devuelve una lista con los dígitos que se repiten en ese número.
+     @param n: Número entero.
+     return: Lista de dígitos repetidos en el número."""
+    n_str = str(n)
+    
+    repetidos = [] 
+    for digito in n_str:
+        if n_str.count(digito) > 1 and digito not in repetidos:
+            repetidos.append(int(digito))
+    
+    return repetidos
