@@ -54,17 +54,29 @@ def contarPoblacion(personas, ciudades, provincia):
     return contador
 
 
-# --- Ejemplos de uso ---
-ciudades = [
-    ["Rosario", "Santa Fe"],
-    ["Carlos Paz", "Córdoba"],
-    ["Balcarce", "Buenos Aires"],
-    ["Cosquín", "Córdoba"]
-]
 
-personas = [
-    ["Juan Perez", 26782345, "Carlos Paz"],
-    ["María Gomez", 40173542, "Rosario"],
-    ["Ana Ríos", 9216378, "Cosquín"]
-]
 
+
+
+
+def digitos_repetidos(n):
+    # Convertimos el número a cadena para poder recorrer sus dígitos
+    n = str(n)
+    repetidos = []
+    
+    for digito in n:
+        # Si el dígito aparece más de una vez y no lo agregamos antes, lo guardamos
+        if n.count(digito) > 1 and digito not in repetidos:
+            repetidos.append(digito)
+    
+    return repetidos
+
+
+def digitos_repetidos(n):
+    """Retorna una lista con los dígitos repetidos de n."""
+    n_str = str(abs(n))
+    repetidos = []
+    for dig in n_str:
+        if n_str.count(dig) > 1 and dig not in repetidos:
+            repetidos.append(dig)
+    return [int(x) for x in repetidos]
