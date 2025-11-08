@@ -67,12 +67,35 @@ def digitos(numero):
         raise ValueError("El parámetro debe representar un entero")
     return [int(ch) for ch in s]
 
+def ocurrencias(lista):
+    """
+     La funcion recibe una lista y retorna una lista que contiene listas formadas por cada elemento de la lista junto con el número de ocurrencias contiguas de ese elemento en la lista, con el orden en que fueron apareciendo. 
+     @params - list
+     @returns - list or ValueError
+    """
+    if not lista:
+        return[]
+    
+    resultado = []
+    elemento_actual = lista[0]
+    contador = 1
+
+    for i in range(1, len(lista)):
+        if lista[i] == elemento_actual:
+            contador += 1
+        else:
+            resultado.append([elemento_actual, contador])
+            elemento_actual = lista[i]
+            contador = 1
+            resultado.append([elemento_actual, contador])
+    return resultado
+
 def borrar_adyacentes(lista):
     """
     La función recibe una lista donde sus elementos son caracteres (strings de longitud 1)
     Retorna una lista en la que queda una única ocurrencia de todos los caracteres adyacentes repetidos.
-     @params - lista
-    @returns - lista
+     @params - list
+    @returns - list or ValueError
     """
     if not lista:
         return []
@@ -86,7 +109,7 @@ def suma_digitos(n):
     """
     Dada una lista de números enteros positivos retornará una lista con la suma de los dígitos de cada uno de los números.
      @params - list
-    @returns - list
+    @returns - list or ValueError
     """
     if not isinstance(n, int):
         raise ValueError("n debe ser un entero")
@@ -97,7 +120,7 @@ def sumatoria_digitos(lista):
     """
     Dada una lista de números enteros positivos retornará una lista con la suma de los dígitos de cada uno de los números.
      @params - list
-    @returns - list
+    @returns - list or ValueError
     """
     if not hasattr(lista, "__iter__"):
         raise ValueError("Se espera una lista iterable de enteros")
@@ -105,10 +128,9 @@ def sumatoria_digitos(lista):
 
 def indice_mayor(lista):
     """
-    La función recibe una lista 
-    retorna una lista que contiene listas formadas por cada elemento de la lista junto con el número de ocurrencias contiguas de ese elemento en la lista, con el orden en que fueron apareciendo. 
-     @params - lista
-    @returns - lista
+    La función retorna el índice en el cual se encuentra el mayor número de la lista.
+     @params - list
+    @returns - string or ValueError
     """
     if len(lista) == 0:
         raise ValueError("La lista no puede estar vacía")
@@ -122,10 +144,9 @@ def indice_mayor(lista):
 
 def dos_sumandos(lista, resultado):
     """
-    La función recibe una lista 
-    retorna una lista que contiene listas formadas por cada elemento de la lista junto con el número de ocurrencias contiguas de ese elemento en la lista, con el orden en que fueron apareciendo. 
-     @params - lista
-    @returns - lista
+    Dada una lista compuesta por números y otro número cualquiera, retorne una nueva lista con dos elementos, que representarán índices de elementos de la lista original cuya suma da como resultado el número pasado por parámetro. De la lista original no se deberá utilizar el mismo número dos veces. 
+    @params - list
+    @returns - list or ValueError
     """
     if not hasattr(lista, "__iter__"):
         raise ValueError("Se espera una lista de números")
