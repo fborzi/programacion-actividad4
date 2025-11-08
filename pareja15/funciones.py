@@ -108,3 +108,5 @@ def letras_repetidas(palabra):
             if palabra.count(letra) > 1 and letra not in repetidas:
                 repetidas.append(letra)
     return repetidas
+
+
