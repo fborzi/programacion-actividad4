@@ -31,3 +31,39 @@ def piedra_papel_tijera(uno, dos):
         return 1
     
     return 2
+
+#Ejercicio10
+"""Función que elimina los elementos adyacentes repetidos en una lista.
+     @param lista: Lista de elementos.
+     return: Nueva lista sin elementos adyacentes repetidos.
+"""
+def borrar_adyacentes(lista):
+    if not lista:
+        return []
+    
+    resultado = [lista[0]]
+    
+    for elemento in lista[1:]:
+        if elemento != resultado[-1]:
+            resultado.append(elemento)
+    
+    return resultado
+
+#Ejercicio12
+"""Función que retorna una lista con la suma de los dígitos de cada número en la lista dada.
+     @param lista: Lista de números enteros.
+     return: Nueva lista con la suma de los dígitos de cada número."""
+# Función que suma los dígitos de un número
+def suma_digitos(n):
+    suma = 0
+    while n > 0:
+        suma += n % 10   
+        n //= 10          
+    return suma
+
+# Función que aplica la suma de dígitos a cada número de la lista
+def sumatoria_digitos(lista):
+    resultado = []
+    for numero in lista:
+        resultado.append(suma_digitos(numero))
+    return resultado
