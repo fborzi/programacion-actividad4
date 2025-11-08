@@ -94,3 +94,17 @@ def digitos_repetidos(n):
             repetidos.append(int(digito))
     
     return repetidos
+
+#Ejercicio20
+def letras_repetidas(palabra):
+    """Función que recibe una palabra y devuelve una lista con las letras que se repiten en esa palabra.
+     @param palabra: Cadena de texto.
+     return: Lista de letras repetidas en la palabra."""
+    palabra = palabra.lower()  
+    repetidas = []             
+
+    for letra in palabra:
+        if letra.isalpha():  
+            if palabra.count(letra) > 1 and letra not in repetidas:
+                repetidas.append(letra)
+    return repetidas
