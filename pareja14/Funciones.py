@@ -75,4 +75,15 @@ def dos_sumandos(lista, resultado):
         for j in range(i + 1, len(lista)):
             if lista[i] + lista[j] == resultado:
                 return [i, j]
-    return "No hay dos números que sumen el objetivo"
+    return "no hay numeros que sumen el objetivo"
+def digitos_repetidos(n):
+    """retorna una lista con los numeros que se repiten mas de 1 vez"""
+    n = str(abs(n))
+    vistos = set()
+    repetidos = set()
+    for d in n:
+        if d in vistos:
+            repetidos.add(int(d))
+        else:
+            vistos.add(d)
+    return list(repetidos)
