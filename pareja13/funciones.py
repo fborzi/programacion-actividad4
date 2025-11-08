@@ -80,3 +80,33 @@ def digitos_repetidos(n):
         if n_str.count(dig) > 1 and dig not in repetidos:
             repetidos.append(dig)
     return [int(x) for x in repetidos]
+
+
+def letras_repetidas(palabra):
+    """Retorna una lista con las letras que se repiten en una palabra (ignorando mayúsculas y sin contar símbolos o dígitos)."""
+    palabra = palabra.lower()
+    letras = [c for c in palabra if c.isalpha()]  # Solo letras
+    repetidas = []
+    for letra in letras:
+        if letras.count(letra) > 1 and letra not in repetidas:
+            repetidas.append(letra)
+    return repetidas
+
+
+
+import unicodedata
+
+def normalizar(texto):
+    """Elimina acentos y pasa el texto a minúsculas."""
+    texto = texto.lower()
+    return ''.join(
+        c for c in unicodedata.normalize('NFD', texto)
+        if unicodedata.category(c) != 'Mn'
+    )
+
+def tiene_tres_vocales_diferentes(palabra):
+    """Devuelve True si la palabra tiene al menos 3 vocales diferentes."""
+    palabra = normalizar(palabra)
+    vocales = {'a', 'e', 'i', 'o', 'u'}
+    encontradas = set([letra for letra in palabra if letra in vocales])
+    return len(encontradas) >= 3
