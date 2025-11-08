@@ -110,3 +110,13 @@ def tiene_tres_vocales_diferentes(palabra):
     vocales = {'a', 'e', 'i', 'o', 'u'}
     encontradas = set([letra for letra in palabra if letra in vocales])
     return len(encontradas) >= 3
+
+
+def frecuencia_caracteres(cadena):
+    frecuencia = {}  # Diccionario vacío
+    for caracter in cadena:
+        if caracter in frecuencia:
+            frecuencia[caracter] += 1
+        else:
+            frecuencia[caracter] = 1
+    return frecuencia
