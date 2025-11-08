@@ -75,3 +75,29 @@ def frecuencia_caracteres(cadena):
         else:
             frecuencias[caracter] = 1
     return frecuencias
+
+def sucesion_mira_y_deci(n):
+    """Calcula los primeros n números de la sucesión 'mira y di'"""
+    if n <= 0:
+        return []
+    
+    sucesion = [1]
+    
+    for _ in range(n - 1):
+        numero_actual = str(sucesion[-1])
+        siguiente = ""
+        
+        i = 0
+        while i < len(numero_actual):
+            digito = numero_actual[i]
+            contador = 1
+            
+            while i + contador < len(numero_actual) and numero_actual[i + contador] == digito:
+                contador += 1
+            
+            siguiente += str(contador) + digito
+            i += contador
+        
+        sucesion.append(int(siguiente))
+    
+    return sucesion
