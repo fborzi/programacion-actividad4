@@ -65,3 +65,13 @@ def contarPoblacion(personas, ciudades, provincia):
         if obtenerProvincia(personas, ciudades, dni) == provincia:
             contador += 1
     return contador
+
+def frecuencia_caracteres(cadena):
+    """Retorna un diccionario con la frecuencia de cada carácter en la cadena"""
+    frecuencias = {}
+    for caracter in cadena:
+        if caracter in frecuencias:
+            frecuencias[caracter] += 1
+        else:
+            frecuencias[caracter] = 1
+    return frecuencias
