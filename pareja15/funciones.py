@@ -67,3 +67,15 @@ def sumatoria_digitos(lista):
     for numero in lista:
         resultado.append(suma_digitos(numero))
     return resultado
+
+#Ejercicio14
+def dos_sumandos(lista, resultado):
+    """Función que encuentra dos índices en una lista cuya suma de elementos es igual al resultado dado.
+     @param lista: Lista de números enteros.
+     @param resultado: Número entero que es la suma objetivo.
+     return: Lista con los dos índices si se encuentran, o lista vacía si no se encuentran."""
+    for i in range(len(lista)):
+        for j in range(i + 1, len(lista)): 
+            if lista[i] + lista[j] == resultado:
+                return [i, j]
+    return []  
