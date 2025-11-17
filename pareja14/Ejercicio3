@@ -1,0 +1,64 @@
+# estado inicial
+a = [ False, 1, 'dos', 3.0, 'ix', (5,), [3, 3], True ]
+print("inicial:", a)
+
+# A. obtener el primero y ultimo elemento
+primero = a[0]
+ultimo = a[-1]
+print("\nA. primero", primero, "ultimo:", ultimo)
+
+# B. eliminar el primer elemento
+eliminado_primero = a.pop(0)
+print("\nB. eliminado primer elemento: ", eliminado_primero)
+print("   lista actual:", a)
+
+# C. eliminar los tres ultimos elementos
+tres_ultimos = a[-3:]
+del a[-3:]
+print("\nC. eliminados tres ultimos elementos:", tres_ultimos)
+print("   lista actual:", a)
+
+# D. insertar el valor 9 en el primer lugar de la lista (desplazando al resto)
+a.insert(0, 9)
+print("\nD. insertado 9 al inicio", a)
+
+# E. reemplazar el valor 'ix' por el valor 4
+# (buscamos el indice 'ix' y lo reemplazamos)
+try:
+    idx = a.index('ix')
+    a[idx] = 4
+    print("\nE. reemplazado 'ix' por 4", a)
+except ValueError:
+    print("\nE. 'ix' no está en la lista (no se reemplaza). Lista actual:", a)
+
+# F. agregar el valor 5 al final de la lista
+a.append(5)
+print("\nF. agregado 5 al final", a)
+
+# G. Obtener, mediante una rebanada (slice), los primeros 3 elementos
+primeros_tres = a[:3]
+print("\nG. primeros tres elementos:", primeros_tres)
+
+# H. insertar la lista al fina de la misma lista
+a.append(a)
+print("\nH. insertada la lista al final de si misma", a)
+
+# I. determinar si el elemento 'dos' pertenece y si 3.0 pertenece a la lista
+print("\nI. ¿'dos' está en la lista?", 'dos' in a)
+print("   ¿3.0 está en la lista?", 3.0 in a)
+
+# J. Determinar cuántas veces aparece el elemento 1 y cuántas veces el elemento 4
+veces_1 = a.count(1)
+veces_4 = a.count(4)
+print("\nJ. Veces que aparece 1:", veces_1)
+print("   Veces que aparece 4:", veces_4)
+
+# K. Imprimir cada elemento de la lista (iterando)
+print("\nK. Imprimo cada elemento iterando (orden normal):")
+for elem in a:
+    print("  ", elem)
+
+# L. Imprimir cada elemento de la lista en forma inversa (iterando)
+print("\nL. Imprimo cada elemento iterando en orden inverso:")
+for elem in reversed(a):
+    print("  ", elem)
