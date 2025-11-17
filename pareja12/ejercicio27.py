@@ -85,7 +85,7 @@ for codigo in productos:
 
 if codigo_menor != None:
     descripcion = productos[codigo_menor][1]
-    print('Código: ', codigo_menor - descripcion, ' Stock: ', menor_stock)
+    print('Código: ', codigo_menor, '- Descripción:', descripcion, 'Stock:', menor_stock)
 else:
     print("No hay productos de almacén")
 
