@@ -113,22 +113,16 @@ def ocurrencias(lista):
 
 # Ejercicio 13:
 def indice_mayor(lista):
-    print(f"Lista recibida: {lista}")  # Depuración
     if not lista:
         return None
 
     indice_max = 0
     mayor = lista[0]
-    print(f"Inicio - índice: {indice_max}, mayor: {mayor}")  # Depuración
 
     for i in range(1, len(lista)):
-        print(f"Comparando índice {i}: {lista[i]} > {mayor}?")  # Depuración
         if lista[i] > mayor:
             mayor = lista[i]
             indice_max = i
-            print(f"Actualizado - índice: {indice_max}, mayor: {mayor}")  # Depuración
-
-    print(f"Resultado final: {indice_max}")  # Depuración
     return indice_max
 
 # Ejercicio 15:
