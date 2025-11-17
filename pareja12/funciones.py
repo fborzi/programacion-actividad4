@@ -63,7 +63,7 @@ def piedra_papel_tijera(uno, dos):
         return 0
     
     if ((uno == 'piedra' and dos == 'tijera') or
-        (uno == 'tijera' and dos == ' papel') or
+        (uno == 'tijera' and dos == 'papel') or
         (uno == 'papel' and dos == 'piedra')):
         return 1
     
