@@ -59,10 +59,12 @@ def obtenerProvincia(personas, ciudades, DNI):
 
 def contarPoblacion(personas, ciudades, provincia):
     """Cuenta cuántas personas viven en una provincia"""
+    # Crear un diccionario ciudad -> provincia para acceso rápido
+    ciudad_a_provincia = {ciudad: prov for ciudad, prov in ciudades}
     contador = 0
     for persona in personas:
-        dni = persona[1]
-        if obtenerProvincia(personas, ciudades, dni) == provincia:
+        ciudad = persona[2]
+        if ciudad_a_provincia.get(ciudad) == provincia:
             contador += 1
     return contador
 
