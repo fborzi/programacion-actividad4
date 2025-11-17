@@ -6,7 +6,7 @@ print("=====================================")
 
 codigo = input("Ingrese el codigo de producto (ingrese -1 para terminar): ")
 
-while codigo != 1:
+while codigo != "-1":
     tipo = input("Tipo (lácteo/almacen/verduleria/limpieza/carniceria/otros): ")
     descripcion = input("Descripcion: ")
     stock_actual = int(input("Stock actual: "))
