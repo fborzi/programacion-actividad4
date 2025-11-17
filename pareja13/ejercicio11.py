@@ -22,7 +22,7 @@ def ocurrencias(lista):
             #nuevo elemento
             elemento_actual = lista[i]
             #se reinicia el contador
-            contado = 1
+            contador = 1
 
             #se agrega el ultimo grupo pendiente
             resultado.append([elemento_actual,contador])
