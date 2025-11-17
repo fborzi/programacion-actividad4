@@ -1,6 +1,6 @@
 horm1 = set(['melanina', 'oxitocina', 'dopamina'])
 horm2 = set(['testosterona', 'melanina'])
-horm3 = set(['calcinotna', 'estradiol'])
+horm3 = set(['calcitonina', 'estradiol'])
 
 # verificar si comparten alguna hormona:
 print("¿horm1 y horm2 comparten alguna hormona?", bool(horm1 & horm2))
