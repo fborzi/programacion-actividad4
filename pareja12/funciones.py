@@ -338,6 +338,8 @@ def sucesion_mira_y_deci(n):
 
             while i + 1 < len(numero_actual) and numero_actual[i + 1] == digito:
                 contador += 1
+                i += 1
             siguente = siguente + str(contador) + digito
+            i += 1
         sucesion.append(int(siguente))
     return sucesion
