@@ -87,7 +87,7 @@ def ocurrencias(lista):
             resultado.append([elemento_actual, contador])
             elemento_actual = lista[i]
             contador = 1
-            resultado.append([elemento_actual, contador])
+    resultado.append([elemento_actual, contador])
     return resultado
 
 def borrar_adyacentes(lista):
