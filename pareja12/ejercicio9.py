@@ -1,4 +1,4 @@
 from funciones import digitos
 
-numero  = input('Ingrese un numero: ')
+numero  = int(input('Ingrese un numero: '))
 print(digitos(numero))
