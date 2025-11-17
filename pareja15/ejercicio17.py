@@ -3,7 +3,7 @@
 # Conjuntos de hormonas
 hormona1 = set(['melanina', 'oxitocina', 'dopamina'])
 hormona2 = set(['testosterona', 'melanina'])
-hormona3 = set(['calcinotna', 'estradiol'])
+hormona3 = set(['calcitonina', 'estradiol'])
 
 print("\nConjuntos de hormonas:")
 print(f"horm1 = {hormona1}")
