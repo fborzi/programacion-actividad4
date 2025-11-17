@@ -5,8 +5,14 @@ def dos_minimos(lista):
     elif len(lista) == 1:
         return (lista[0], None)
     else:
-        lista_ordenada = sorted(lista)
-        return (lista_ordenada[0], lista_ordenada[1])
+        min1, min2 = None, None
+        for num in lista:
+            if min1 is None or num < min1:
+                min2 = min1
+                min1 = num
+            elif min2 is None or num < min2:
+                min2 = num
+        return (min1, min2)
 
 def digitos(numero):
     """Retorna la lista con los dígitos que forman al número"""
