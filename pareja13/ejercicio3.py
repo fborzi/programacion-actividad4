@@ -15,7 +15,7 @@ print('Lista con el primer elemento eliminado:',a)
 
 #Eliminar los ultimos tres elementos de la lista
 print('Lista:',a)
-a=a[-3:]
+del a[-3:]
 print('Lista sin los ultimos tres elementos:',a)
 
 #insertar el valor 9 en el primer lugar de la lista
