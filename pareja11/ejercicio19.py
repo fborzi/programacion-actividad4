@@ -33,6 +33,6 @@ if numeros:
     promedio = sum(numeros) / len(numeros)
     
     print(f"c) porcentaje de numeros mayores a 478: {porcentaje}%")
-    print(f"d) promedio de los numeros precesados: {promedio}")
+    print(f"d) promedio de los numeros procesados: {promedio}")
 else:
     print("no se procesaron numeros con digitos repetidos")            
