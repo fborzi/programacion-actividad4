@@ -15,7 +15,7 @@ while not fin_lectura:
     else:
         texto_completo += linea + " "
 
-print("Resultafos del Analisis")
+print("Resultados del Análisis")
 
 # Palabras con al menos 3 vocales diferentes
 print("\ne) Palabras con al menos 3 vocales diferentes:")
