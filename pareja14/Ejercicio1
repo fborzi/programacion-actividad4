@@ -1,0 +1,18 @@
+# Definir la lista
+b = [4, "palabra", [0, 1], 9.6, False]
+
+# A. Verificar pertenencia de elementos
+print("A. Verificación de pertenencia:")
+print("9.6 está en la lista:", 9.6 in b)
+print("0 está en la lista:", 0 in b)
+print("False está en la lista:", False in b)
+print("[0, 1] está en la lista:", [0, 1] in b)
+print("4.0 está en la lista:", 4.0 in b)
+print("'p' está en la lista:", 'p' in b)
+
+# B. Encontrar posición del elemento [0, 1]
+print("\nB. Posición del elemento [0, 1]:")
+if [0, 1] in b:
+    print("El elemento [0, 1] se encuentra en el índice:", b.index([0, 1]))
+else:
+    print("El elemento [0, 1] no está en la lista")
