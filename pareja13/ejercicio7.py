@@ -18,7 +18,7 @@ def dos_min(lista):
     lista_sin_min.remove(primero)
 
     #buscar el segundo minimo
-    segundo=minimo_elemento(lista)
+    segundo=minimo_elemento(lista_sin_min)
     
     #devolver ambos valores
     return(primero,segundo)
