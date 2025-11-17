@@ -1,7 +1,7 @@
 # Definición de los conjuntos
 horm1 = {'melanina', 'oxitocina', 'dopamina'}
 horm2 = {'testosterona', 'melanina'}
-horm3 = {'calcinotna', 'estradiol'}
+horm3 = {'calcitonina', 'estradiol'}
 
 # 1. Verificar si horm1 y horm2 comparten alguna hormona
 comparten_horm1_horm2 = horm1.intersection(horm2)
